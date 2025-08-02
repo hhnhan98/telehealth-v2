@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middlewares/auth');
 const Doctor = require('../models/Doctor');
+const { getPatientsWithLastRecord } = require('../controllers/doctorController');
 
-// GET /api/doctors?specialty=ObjectId
 router.get('/', async (req, res) => {
   try {
     const { specialty } = req.query;
@@ -15,5 +16,8 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Lỗi server khi tìm bác sĩ' });
   }
 });
+
+// Bảo vệ route bằng verifyToken
+router.get('/patients', auth.verifyToken, getPatientsWithLastRecord);
 
 module.exports = router;

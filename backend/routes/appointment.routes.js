@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Appointment = require('../models/Appointment');
-const authenticateJWT = require('../middlewares/authenticateJWT');
+const auth = require('../middlewares/auth');
 
 // ✅ Lấy tất cả lịch hẹn (sau này có thể lọc theo vai trò user)
 router.get('/', authenticateJWT, async (req, res) => {
