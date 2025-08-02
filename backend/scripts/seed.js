@@ -1,33 +1,49 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+const User = require('../models/User');
 const Specialty = require('../models/Specialty');
-const Doctor = require('../models/Doctor');
 
-// Kết nối MongoDB (sửa lại URI đúng nếu cần)
-mongoose.connect('mongodb+srv://teleadmin:3O21nHsixNkti6yY@cluster0.erwicee.mongodb.net/telehealth?retryWrites=true&w=majority&appName=Cluster0')
-  .then(() => console.log('Connected'))
-  .catch(err => console.error(err));
+dotenv.config();
 
-async function seed() {
-  // Xoá sạch trước khi seed
-  await Specialty.deleteMany({});
-  await Doctor.deleteMany({});
+mongoose.connect(process.env.MONGO_URI).then(() => {
+  console.log('✅ Kết nối MongoDB thành công');
+  seedData();
+}).catch(err => console.error('❌ Lỗi kết nối MongoDB:', err));
 
-  // Tạo chuyên khoa
-  const specialties = await Specialty.insertMany([
-    { name: 'Nội tổng quát' },
-    { name: 'Da liễu' },
-    { name: 'Nhi khoa' },
-  ]);
+async function seedData() {
+  try {
+    // Xóa dữ liệu cũ
+    await User.deleteMany({});
+    await Specialty.deleteMany({});
+    console.log('🧹 Đã xóa dữ liệu cũ');
 
-  // Tạo bác sĩ gắn với chuyên khoa
-  await Doctor.insertMany([
-    { fullName: 'Bác sĩ A', email: 'a@example.com', specialty: specialties[0]._id },
-    { fullName: 'Bác sĩ B', email: 'b@example.com', specialty: specialties[1]._id },
-    { fullName: 'Bác sĩ C', email: 'c@example.com', specialty: specialties[2]._id },
-  ]);
+    // Tạo các chuyên khoa trước
+    const specialties = await Specialty.insertMany([
+      { name: 'Tim mạch' },
+      { name: 'Nội tiết' },
+      { name: 'Tiêu hóa' },
+    ]);
+    console.log('✅ Đã seed chuyên khoa');
 
-  console.log('Đã seed xong');
-  process.exit();
+    // Lấy ObjectId của từng chuyên khoa
+    const timMach = specialties.find(s => s.name === 'Tim mạch');
+    const noiTiet = specialties.find(s => s.name === 'Nội tiết');
+
+    const salt = await bcrypt.genSalt(10);
+
+    await User.insertMany(users);
+    console.log('✅ Seed user thành công!');
+    console.table(users.map(u => ({
+      Họ_tên: u.fullName,
+      Email: u.email,
+      Mật_khẩu: '123456',
+      Vai_trò: u.role,
+    })));
+
+    process.exit();
+  } catch (err) {
+    console.error('❌ Lỗi seed:', err);
+    process.exit(1);
+  }
 }
-
-seed();

@@ -22,6 +22,10 @@ const appointmentSchema = new mongoose.Schema({
     type: String,
     enum: ['pending', 'completed', 'cancelled'],
     default: 'pending'
+  },
+  isReminderSent: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true

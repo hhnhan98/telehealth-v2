@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middlewares/auth');
-const Doctor = require('../models/Doctor');
-const { getPatientsWithLastRecord } = require('../controllers/doctorController');
+const User = require('../models/User');
 
+// [GET] /api/doctors?specialty=... → tìm bác sĩ theo chuyên khoa
 router.get('/', async (req, res) => {
   try {
     const { specialty } = req.query;
-    const query = specialty ? { specialty } : {};
+    const query = { role: 'doctor' };
 
-    const doctors = await Doctor.find(query).populate('specialty', 'name');
+    if (specialty) {
+      query.specialty = specialty;
+    }
+
+    const doctors = await User.find(query).populate('specialty', 'name');
     res.json(doctors);
   } catch (err) {
     console.error('Lỗi tìm bác sĩ:', err);
     res.status(500).json({ error: 'Lỗi server khi tìm bác sĩ' });
   }
 });
-
-// Bảo vệ route bằng verifyToken
-router.get('/patients', auth.verifyToken, getPatientsWithLastRecord);
 
 module.exports = router;

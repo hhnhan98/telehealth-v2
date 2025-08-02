@@ -26,5 +26,11 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
+// Route tìm kiếm nhanh bệnh nhân theo tên/email
+const { search } = req.query;
+const query = { role: 'patient' };
+if (search) {
+  query.fullName = { $regex: search, $options: 'i' };
+}
 
 module.exports = router;

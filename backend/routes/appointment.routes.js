@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Appointment = require('../models/Appointment');
-const auth = require('../middlewares/auth');
+const { verifyToken } = require('../middlewares/auth');
 
-// ✅ Lấy tất cả lịch hẹn (sau này có thể lọc theo vai trò user)
-router.get('/', authenticateJWT, async (req, res) => {
+// ✅ Lấy tất cả lịch hẹn (sẽ thêm lọc theo vai trò sau này)
+router.get('/', verifyToken, async (req, res) => {
   try {
     const appointments = await Appointment.find()
       .populate('patient', 'fullName email')
@@ -16,7 +16,7 @@ router.get('/', authenticateJWT, async (req, res) => {
 });
 
 // ✅ Lấy lịch hẹn theo ID
-router.get('/:id', authenticateJWT, async (req, res) => {
+router.get('/:id', verifyToken, async (req, res) => {
   try {
     const appointment = await Appointment.findById(req.params.id)
       .populate('patient', 'fullName email')
@@ -29,23 +29,21 @@ router.get('/:id', authenticateJWT, async (req, res) => {
   }
 });
 
-// ✅ Tạo lịch hẹn mới (bệnh nhân tạo)
-router.post('/', authenticateJWT, async (req, res) => {
+// ✅ Tạo lịch hẹn mới (chỉ bệnh nhân)
+router.post('/', verifyToken, async (req, res) => {
   try {
     const { doctor, date, reason } = req.body;
-
     if (!doctor || !date || !reason) {
       return res.status(400).json({ error: 'Thiếu thông tin đặt lịch' });
     }
 
-    const patient = req.user.id;
-
     const newAppointment = new Appointment({
-      patient,
+      patient: req.user.id,
       doctor,
       date,
       reason,
     });
+
     await newAppointment.save();
 
     const populated = await Appointment.findById(newAppointment._id)
@@ -64,16 +62,21 @@ router.post('/', authenticateJWT, async (req, res) => {
   }
 });
 
-// ✅ Cập nhật lịch hẹn (ví dụ đổi thời gian)
-router.put('/:id', authenticateJWT, async (req, res) => {
+// ✅ Cập nhật lịch hẹn (chỉ người đặt được sửa)
+router.put('/:id', verifyToken, async (req, res) => {
   try {
+    const appointment = await Appointment.findById(req.params.id);
+    if (!appointment) return res.status(404).json({ error: 'Không tìm thấy lịch hẹn' });
+
+    if (appointment.patient.toString() !== req.user.id) {
+      return res.status(403).json({ error: 'Không có quyền cập nhật lịch hẹn này' });
+    }
+
     const updated = await Appointment.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
     );
-    if (!updated)
-      return res.status(404).json({ error: 'Không tìm thấy lịch hẹn' });
 
     res.json({ message: 'Cập nhật thành công', appointment: updated });
   } catch (err) {
@@ -81,16 +84,14 @@ router.put('/:id', authenticateJWT, async (req, res) => {
   }
 });
 
-// ✅ Hủy lịch hẹn — thay đổi trạng thái thành "cancelled"
-router.patch('/:id/cancel', authenticateJWT, async (req, res) => {
+// ✅ Hủy lịch hẹn (chỉ bệnh nhân đặt mới được hủy)
+router.patch('/:id/cancel', verifyToken, async (req, res) => {
   try {
     const appointment = await Appointment.findById(req.params.id);
-
     if (!appointment) {
       return res.status(404).json({ error: 'Không tìm thấy lịch hẹn' });
     }
 
-    // Kiểm tra quyền (chỉ bệnh nhân tạo lịch mới được hủy)
     if (appointment.patient.toString() !== req.user.id) {
       return res.status(403).json({ error: 'Không có quyền hủy lịch hẹn này' });
     }
@@ -108,13 +109,17 @@ router.patch('/:id/cancel', authenticateJWT, async (req, res) => {
   }
 });
 
-// ✅ Xoá lịch hẹn
-router.delete('/:id', authenticateJWT, async (req, res) => {
+// ✅ Xoá lịch hẹn (chỉ người tạo mới được xoá)
+router.delete('/:id', verifyToken, async (req, res) => {
   try {
-    const deleted = await Appointment.findByIdAndDelete(req.params.id);
-    if (!deleted)
-      return res.status(404).json({ error: 'Không tìm thấy lịch hẹn' });
+    const appointment = await Appointment.findById(req.params.id);
+    if (!appointment) return res.status(404).json({ error: 'Không tìm thấy lịch hẹn' });
 
+    if (appointment.patient.toString() !== req.user.id) {
+      return res.status(403).json({ error: 'Không có quyền xoá lịch hẹn này' });
+    }
+
+    await appointment.deleteOne();
     res.json({ message: 'Đã xoá lịch hẹn' });
   } catch (err) {
     res.status(500).json({ error: 'Xoá thất bại', details: err.message });
