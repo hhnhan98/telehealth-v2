@@ -1,24 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const { authorize, verifyToken } = require('../middlewares/auth'); // ✅ đúng cú pháp
 const userController = require('../controllers/user.controller');
 
-// ✅ Chỉ bác sĩ được phép truy cập danh sách người dùng
-router.get('/', verifyToken, authorize('doctor'), userController.getAllUsers);
+// 📌 Lấy tất cả user (có thể lọc theo role, specialty)
+router.get('/', userController.getAllUsers);
 
-// ✅ GET profile của chính mình
-router.get('/me', verifyToken, userController.getMyProfile);
-
-// ✅ GET user theo ID
+// 📌 Lấy user theo ID
 router.get('/:id', userController.getUserById);
 
-// ✅ POST tạo user mới
+// 📌 Lấy thông tin cá nhân của user đã đăng nhập
+// 👉 Để dùng được API này, cần dùng middleware xác thực JWT sau này
+// router.get('/me', verifyToken, userController.getMyProfile);
+
+// 📌 Tạo user mới
 router.post('/', userController.createUser);
 
-// ✅ PUT cập nhật user
+// 📌 Cập nhật user
 router.put('/:id', userController.updateUser);
 
-// ✅ DELETE xoá user
+// 📌 Xoá user
 router.delete('/:id', userController.deleteUser);
+
+// 📌 Lấy danh sách bác sĩ theo chuyên khoa
+router.get('/doctor/by-specialty', userController.getDoctorsBySpecialty);
 
 module.exports = router;

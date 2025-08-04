@@ -4,17 +4,20 @@ const specialtySchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true,        // Ngăn tạo trùng tên chuyên khoa
+    unique: true,
     trim: true
   },
   description: {
     type: String,
-    default: ''
+    default: '',
+    trim: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+  icon: {
+    type: String,
+    default: '', // 👉 URL hoặc tên biểu tượng (nếu dùng FontAwesome, HeroIcons,...)
+  },
+}, {
+  timestamps: true // Tự động tạo `createdAt` và `updatedAt`
 });
 
 module.exports = mongoose.model('Specialty', specialtySchema);

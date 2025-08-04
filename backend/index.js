@@ -35,6 +35,7 @@ const appointmentRoutes = require('./routes/appointment.routes');
 const medicalRecordRoutes = require('./routes/medicalRecord.routes');
 const messageRoutes = require('./routes/message.routes');
 const specialtyRoutes = require('./routes/specialty.routes');
+const healthRecordRoutes = require('./routes/healthRecord.routes');
 
 app.use('/api/auth', authRoutes); // Đăng ký, đăng nhập
 app.use('/api/users', userRoutes); // Thông tin người dùng
@@ -42,6 +43,7 @@ app.use('/api/appointments', appointmentRoutes); // Đặt lịch, hủy lịch
 app.use('/api/medical-records', medicalRecordRoutes); // Hồ sơ bệnh án
 app.use('/api/messages', messageRoutes); // Tin nhắn
 app.use('/api/specialties', specialtyRoutes); // Danh sách chuyên khoa
+app.use('/api/health-records', healthRecordRoutes); // Chi tiết hồ sơ bệnh án
 
 // --- 🧯 Error Handling ---
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
