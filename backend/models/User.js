@@ -10,16 +10,22 @@ const userSchema = new mongoose.Schema({
     ref: 'Specialty',
     default: null, // Bệnh nhân không cần chuyên khoa
   },
+
+  // ✅ Thêm các trường thông tin cá nhân được cập nhật bởi người dùng
+  phone: { type: String, default: '' },
+  gender: { type: String, enum: ['male', 'female', 'other'], default: 'other' },
+  birthYear: { type: Number, default: null },
+
 }, { timestamps: true });
 
-// ✅ Ẩn password khi convert to JSON
+// Ẩn mật khẩu khi trả về JSON
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
   return obj;
 };
 
-  // ✅ Tùy chọn: validate specialty khi là doctor
+// Validate: nếu là bác sĩ mà không có chuyên khoa → báo lỗi
 userSchema.pre('save', function (next) {
   if (this.role === 'doctor' && !this.specialty) {
     return next(new Error('Bác sĩ phải có chuyên khoa'));

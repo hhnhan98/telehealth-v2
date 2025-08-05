@@ -8,10 +8,8 @@ const verifyToken = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id).select('-password');
-    if (!user) return res.status(401).json({ error: 'Người dùng không tồn tại' });
+    req.user = { id: decoded.id }; // gán ID
 
-    req.user = user;
     next();
   } catch (err) {
     if (err.name === 'TokenExpiredError') {

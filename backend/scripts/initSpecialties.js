@@ -10,25 +10,31 @@ const specialties = [
   { name: 'Da liễu' },
 ];
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(async () => {
-  console.log('Connected to MongoDB');
+const seedSpecialties = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-  for (const sp of specialties) {
-    const exists = await Specialty.findOne({ name: sp.name });
-    if (!exists) {
-      await Specialty.create(sp);
-      console.log(`Added specialty: ${sp.name}`);
-    } else {
-      console.log(`Specialty already exists: ${sp.name}`);
+    console.log('Đã kết nối MongoDB');
+
+    for (const sp of specialties) {
+      const exists = await Specialty.findOne({ name: sp.name });
+      if (!exists) {
+        await Specialty.create(sp);
+        console.log(`Đã thêm chuyên ngành: ${sp.name}`);
+      } else {
+        console.log(`Chuyên ngành đã tồn tại: ${sp.name}`);
+      }
     }
-  }
 
-  mongoose.disconnect();
-})
-.catch(err => {
-  console.error('Error:', err);
-});
+    console.log('Khởi tạo chuyên ngành hoàn tất');
+    process.exit(0);
+  } catch (err) {
+    console.error('Lỗi:', err);
+    process.exit(1);
+  }
+};
+
+seedSpecialties();
