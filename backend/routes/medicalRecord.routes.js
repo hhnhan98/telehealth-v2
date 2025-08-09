@@ -1,36 +1,39 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../middlewares/auth');
-const medicalRecordController = require('../controllers/medicalRecordController');
+const medicalRecordController = require('../controllers/medicalRecord.controller');
 const User = require('../models/User');
 
-// Middleware kiểm tra vai trò bác sĩ
+// Middleware: Kiểm tra nếu người dùng là bác sĩ
 const isDoctor = async (req, res, next) => {
   const user = await User.findById(req.user.id);
-  if (user && user.role === 'doctor') return next();
+  if (user?.role === 'doctor') return next();
   return res.status(403).json({ error: 'Chỉ bác sĩ mới có quyền thực hiện thao tác này' });
 };
 
-// Middleware kiểm tra vai trò bệnh nhân
+// Middleware: Kiểm tra nếu người dùng là bệnh nhân
 const isPatient = async (req, res, next) => {
   const user = await User.findById(req.user.id);
-  if (user && user.role === 'patient') return next();
+  if (user?.role === 'patient') return next();
   return res.status(403).json({ error: 'Chỉ bệnh nhân mới có quyền thực hiện thao tác này' });
 };
 
-// ✅ Bác sĩ tạo hồ sơ khám bệnh mới
+// Tạo hồ sơ bệnh án mới (chỉ bác sĩ)
 router.post('/', verifyToken, isDoctor, medicalRecordController.createMedicalRecord);
 
-// ✅ Bác sĩ lấy tất cả hồ sơ (có thể thêm lọc theo bệnh nhân sau)
+// Lấy danh sách tất cả hồ sơ bệnh án (chỉ bác sĩ)
 router.get('/', verifyToken, isDoctor, medicalRecordController.getAllMedicalRecords);
 
-// ✅ Lấy hồ sơ theo ID (bác sĩ được xem tất cả, bệnh nhân chỉ xem của mình)
+// Lấy chi tiết 1 hồ sơ bệnh án theo ID
 router.get('/:id', verifyToken, medicalRecordController.getMedicalRecordById);
 
-// ✅ Bác sĩ cập nhật hồ sơ
+// Cập nhật hồ sơ bệnh án theo ID (chỉ bác sĩ)
 router.put('/:id', verifyToken, isDoctor, medicalRecordController.updateMedicalRecord);
 
-// ✅ Bác sĩ xoá hồ sơ
+// Xóa hồ sơ bệnh án theo ID (chỉ bác sĩ)
 router.delete('/:id', verifyToken, isDoctor, medicalRecordController.deleteMedicalRecord);
+
+// Lấy danh sách hồ sơ bệnh án theo ID bệnh nhân (cả bác sĩ và bệnh nhân đều dùng)
+router.get('/patient/:id', verifyToken, medicalRecordController.getMedicalRecordsByPatient);
 
 module.exports = router;

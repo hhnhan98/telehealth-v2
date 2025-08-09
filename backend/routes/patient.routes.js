@@ -4,7 +4,7 @@ const { verifyToken } = require('../middlewares/auth');
 
 const User = require('../models/User'); // ✅ Sửa lại từ Patient -> User
 
-// ✅ Route lấy thông tin 1 bệnh nhân (role: patient) theo ID
+// Route lấy thông tin 1 bệnh nhân (role: patient) theo ID
 router.get('/:id', verifyToken, async (req, res) => {
   try {
     const patient = await User.findOne({ _id: req.params.id, role: 'patient' }).select('-password');
