@@ -1,5 +1,6 @@
 // controllers/medicalRecord.controller.js
 const mongoose = require('mongoose');
+
 const MedicalRecord = require('../models/MedicalRecord');
 
 // Lấy danh sách hồ sơ bệnh án theo bệnh nhân

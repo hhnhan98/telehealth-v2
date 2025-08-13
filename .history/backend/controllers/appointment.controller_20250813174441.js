@@ -1,5 +1,6 @@
 // src/pages/Patient/BookAppointment.jsx
 
+/*
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 
@@ -169,4 +170,4 @@ const BookAppointment = () => {
   );
 };
 
-export default BookAppointment;
+export default BookAppointment; */

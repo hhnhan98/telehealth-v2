@@ -1,5 +1,6 @@
 // src/pages/Patient/BookAppointment.jsx
 
+/*
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 
@@ -101,7 +102,7 @@ const BookAppointment = () => {
           </option>
         ))}
       </select>
-
+*/
       {/* Chọn bác sĩ */}
       <label className="block mb-2 font-medium">Bác sĩ</label>
       <select

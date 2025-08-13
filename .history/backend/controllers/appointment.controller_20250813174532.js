@@ -1,5 +1,6 @@
 // src/pages/Patient/BookAppointment.jsx
 
+
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 
@@ -82,6 +83,7 @@ const BookAppointment = () => {
       setLoading(false);
     }
   };
+*/
 
   return (
     <div className="p-6 max-w-2xl mx-auto">

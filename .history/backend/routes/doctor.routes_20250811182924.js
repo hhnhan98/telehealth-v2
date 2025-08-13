@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const Appointment = require('../models/Appointment');
-const doctorController = require('../controllers/doctor.controller');
 const { verifyToken } = require('../middlewares/auth');
-const { authorize } = require('../middlewares/role');
 
-// [GET] /api/doctor?specialty=... → tìm bác sĩ theo chuyên khoa
+// [GET] /api/doctors?specialty=... → tìm bác sĩ theo chuyên khoa
 router.get('/', async (req, res) => {
   try {
     const { specialty } = req.query;
     const query = { role: 'doctor' };
-    if (specialty) query.specialty = specialty;
+
+    if (specialty) {
+      query.specialty = specialty;
+    }
 
     const doctors = await User.find(query).populate('specialty', 'name');
     res.json(doctors);
@@ -22,9 +22,14 @@ router.get('/', async (req, res) => {
 });
 
 // Route xem lịch làm việc của bác sĩ (ngày hoặc tuần)
-router.get('/work-schedule', verifyToken, authorize('doctor'), async (req, res) => {
+router.get('/work-schedule', verifyToken, async (req, res) => {
+  if (req.user.role !== 'doctor') {
+    return res.status(403).json({ error: 'Chỉ bác sĩ mới được phép truy cập' });
+  }
+
+  const view = req.query.view || 'day';
+
   try {
-    const view = req.query.view || 'day';
     const now = new Date();
     let startDate, endDate;
 
@@ -36,28 +41,22 @@ router.get('/work-schedule', verifyToken, authorize('doctor'), async (req, res) 
       startDate.setHours(0, 0, 0, 0);
 
       endDate = new Date(startDate);
-      endDate.setDate(startDate.getDate() + 6); // 7 ngày tổng
-      endDate.setHours(23, 59, 59, 999);
+      endDate.setDate(startDate.getDate() + 7);
     } else {
       startDate = new Date(now.setHours(0, 0, 0, 0));
       endDate = new Date(now.setHours(23, 59, 59, 999));
     }
 
     const appointments = await Appointment.find({
-      doctor: req.user._id,
+      doctor: req.user.id,
       date: { $gte: startDate, $lte: endDate },
       status: { $ne: 'cancelled' },
-    })
-      .sort({ date: 1 })
-      .populate('patient', 'fullName email');
+    }).sort({ date: 1 }).populate('patient', 'fullName email');
 
     res.json(appointments);
   } catch (err) {
     res.status(500).json({ error: 'Lỗi khi lấy lịch làm việc', details: err.message });
   }
 });
-
-// Dashboard bác sĩ
-router.get('/dashboard', verifyToken, authorize('doctor'), doctorController.getDashboard);
 
 module.exports = router;

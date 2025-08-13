@@ -7,6 +7,7 @@ const socketIO = require('socket.io');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
+const medicalRecordRoutes = require('./routes/medicalRecord.routes');
 
 // Middleware xử lý lỗi
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
@@ -65,7 +66,7 @@ app.use('/api/doctors', require('./routes/doctor.routes'));
 app.use('/api/patients', require('./routes/patient.routes')); 
 app.use('/api/medical-records', require('./routes/medicalRecord.routes'));
 app.use('/api/health-records', require('./routes/healthRecord.routes'));
-app.use('/api/doctor-dashboard', require('./routes/doctorDashboard.routes'));
+app.use('/api/medical-records', medicalRecordRoutes);
 
 // Middleware xử lý lỗi
 app.use(notFound);
