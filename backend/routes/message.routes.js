@@ -3,7 +3,7 @@ const router = express.Router();
 const { verifyToken } = require('../middlewares/auth');
 const Message = require('../models/Message');
 
-// ✅ Lấy tất cả tin nhắn giữa 2 người dùng
+// Lấy tất cả tin nhắn giữa 2 người dùng
 router.get('/:user1/:user2', verifyToken, async (req, res) => {
   try {
     const { user1, user2 } = req.params;

@@ -1,19 +1,15 @@
 // controllers/medicalRecord.controller.js
 const MedicalRecord = require('../models/MedicalRecord');
 
-// Lấy danh sách hồ sơ bệnh án theo bệnh nhân
+// Lấy danh sách hồ sơ bệnh án theo patient
 const getRecordsByPatient = async (req, res) => {
   try {
     const { patientId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(patientId)) {
-      return res.status(400).json({ error: 'patientId không hợp lệ' });
-    }
     const records = await MedicalRecord.find({ patient: patientId })
-      .populate('doctor', 'fullName email')
+      .populate('doctor', 'fullName')
       .sort({ visitDate: -1 });
     res.json(records);
   } catch (err) {
-    console.error('Lỗi getRecordsByPatient:', err);
     res.status(500).json({ error: 'Lỗi khi lấy hồ sơ bệnh án', details: err.message });
   }
 };
@@ -21,13 +17,9 @@ const getRecordsByPatient = async (req, res) => {
 // Tạo hồ sơ bệnh án mới
 const createMedicalRecord = async (req, res) => {
   try {
-    const { patient, symptoms, diagnosis, prescriptions, notes, visitDate } = req.body;
-    // Lấy doctor id từ token (req.user được gán bởi middleware xác thực)
-    const doctor = req.user?._id;
-
-    // Kiểm tra bắt buộc
+    const { patient, doctor, symptoms, diagnosis, prescriptions, notes, visitDate } = req.body;
     if (!patient || !doctor || !symptoms) {
-      return res.status(400).json({ error: 'Thiếu thông tin bắt buộc (patient, doctor, symptoms)' });
+      return res.status(400).json({ error: 'Thiếu thông tin bắt buộc' });
     }
 
     const newRecord = new MedicalRecord({
@@ -50,7 +42,6 @@ const createMedicalRecord = async (req, res) => {
 // Cập nhật hồ sơ bệnh án
 const updateMedicalRecord = async (req, res) => {
   try {
-    // Có thể kiểm tra quyền ở middleware authorize rồi, nên chỉ cập nhật luôn
     const updatedRecord = await MedicalRecord.findByIdAndUpdate(
       req.params.id,
       req.body,

@@ -39,7 +39,6 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -58,13 +57,13 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 app.use('/api/appointments', require('./routes/appointment.routes'));
+app.use('/api/medical-records', require('./routes/medicalRecord.routes'));
 app.use('/api/messages', require('./routes/message.routes'));
 app.use('/api/specialties', require('./routes/specialty.routes'));
+app.use('/api/health-records', require('./routes/healthRecord.routes'));
 app.use('/api/schedule', require('./routes/schedule.routes'));
 app.use('/api/doctors', require('./routes/doctor.routes'));
-app.use('/api/patients', require('./routes/patient.routes')); 
-app.use('/api/medical-records', require('./routes/medicalRecord.routes'));
-app.use('/api/health-records', require('./routes/healthRecord.routes'));
+app.use('/api/patients', require('./routes/patient.routes')); // Quản lý bệnh nhân
 
 // Middleware xử lý lỗi
 app.use(notFound);

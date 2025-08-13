@@ -1,0 +1,35 @@
+.medical-record-list {
+  margin-top: 16px;
+}
+
+.record-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+.record-table th,
+.record-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.record-table th {
+  background-color: #f7f7f7;
+}
+
+.record-table tbody tr:hover {
+  background-color: #f0f8ff;
+}
+
+.error {
+  color: #d32f2f;
+  margin-top: 8px;
+}
+
+.form-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}

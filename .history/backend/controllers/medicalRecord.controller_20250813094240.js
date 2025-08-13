@@ -5,15 +5,11 @@ const MedicalRecord = require('../models/MedicalRecord');
 const getRecordsByPatient = async (req, res) => {
   try {
     const { patientId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(patientId)) {
-      return res.status(400).json({ error: 'patientId không hợp lệ' });
-    }
     const records = await MedicalRecord.find({ patient: patientId })
-      .populate('doctor', 'fullName email')
+      .populate('doctor', 'fullName email') // có thể thêm các trường cần thiết
       .sort({ visitDate: -1 });
     res.json(records);
   } catch (err) {
-    console.error('Lỗi getRecordsByPatient:', err);
     res.status(500).json({ error: 'Lỗi khi lấy hồ sơ bệnh án', details: err.message });
   }
 };

@@ -1,20 +1,14 @@
-// routes/medicalRecord.routes.js
 const express = require('express');
 const router = express.Router();
 const medicalRecordController = require('../controllers/medicalRecord.controller');
 const { verifyToken } = require('../middlewares/auth');
 const { authorize } = require('../middlewares/role');
 
-// Lấy hồ sơ bệnh án theo bệnh nhân (bác sĩ hoặc admin)
-router.get('/patient/:patientId', verifyToken, authorize('admin', 'doctor'), medicalRecordController.getRecordsByPatient);
-
-// Tạo hồ sơ bệnh án (bác sĩ)
 router.post('/', verifyToken, authorize('doctor'), medicalRecordController.createMedicalRecord);
-
-// Cập nhật hồ sơ bệnh án (bác sĩ)
+router.get('/', verifyToken, authorize('doctor'), medicalRecordController.getAllMedicalRecords);
+router.get('/:id', verifyToken, medicalRecordController.getMedicalRecordById);
 router.put('/:id', verifyToken, authorize('doctor'), medicalRecordController.updateMedicalRecord);
-
-// Xóa hồ sơ bệnh án (admin)
-router.delete('/:id', verifyToken, authorize('admin'), medicalRecordController.deleteMedicalRecord);
+router.delete('/:id', verifyToken, authorize('doctor'), medicalRecordController.deleteMedicalRecord);
+router.get('/patient/:id', verifyToken, authorize('doctor', 'patient'), medicalRecordController.getMedicalRecordsByPatient);
 
 module.exports = router;

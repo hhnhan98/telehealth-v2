@@ -1,7 +1,9 @@
+// controllers/patient.controller.js
 const User = require("../models/User");
 
 const getPatientsWithLastRecord = async (req, res) => {
   try {
+    // Lấy danh sách bệnh nhân + hồ sơ y tế mới nhất
     const patients = await User.find({ role: "patient" })
       .populate({
         path: "healthRecords",
@@ -18,5 +20,4 @@ const getPatientsWithLastRecord = async (req, res) => {
 
 module.exports = {
   getPatientsWithLastRecord,
-  // các controller khác ở đây (nếu có)
 };
