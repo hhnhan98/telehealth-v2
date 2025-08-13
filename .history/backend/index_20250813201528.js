@@ -13,7 +13,7 @@ const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 
 // Kiểm tra biến môi trường bắt buộc
 if (!process.env.MONGODB_URI) {
-  console.error('*** Thiếu MONGODB_URI trong file .env');
+  console.error('❌ Thiếu MONGODB_URI trong file .env');
   process.exit(1);
 }
 
@@ -34,7 +34,7 @@ app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(rateLimit({
   windowMs: 60 * 1000,
   max: 120,
-  message: '*** Quá nhiều request, vui lòng thử lại sau.'
+  message: '⚠️ Quá nhiều request, vui lòng thử lại sau.'
 }));
 
 // Cấu hình CORS & body parser
@@ -51,9 +51,9 @@ mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log('>>> Kết nối MongoDB thành công'))
+  .then(() => console.log('✅ Kết nối MongoDB thành công'))
   .catch(err => {
-    console.error('*** Lỗi kết nối MongoDB:', err.message);
+    console.error('❌ Lỗi kết nối MongoDB:', err.message);
     process.exit(1);
   });
 
@@ -70,7 +70,6 @@ app.use('/api/patients', require('./routes/patient.routes'));
 app.use('/api/medical-records', require('./routes/medicalRecord.routes'));
 app.use('/api/health-records', require('./routes/healthRecord.routes'));
 app.use('/api/doctor-dashboard', require('./routes/doctorDashboard.routes'));
-app.use('/api/booking', require('./routes/booking.routes'));
 
 // Middleware xử lý lỗi
 app.use(notFound);
@@ -81,16 +80,16 @@ try {
   const socketHandler = require('./socket');
   if (typeof socketHandler === 'function') {
     socketHandler(io);
-    console.log('>>> Socket.IO sẵn sàng');
+    console.log('✅ Socket.IO sẵn sàng');
   }
 } catch {
-  console.warn('>>> Không tìm thấy file socket.js, bỏ qua Socket.IO');
+  console.warn('⚠️ Không tìm thấy file socket.js, bỏ qua Socket.IO');
 }
 
 // ===== Khởi động server =====
 const PORT = process.env.PORT || 5000;
 const instance = server.listen(PORT, () => {
-  console.log(`>>> Server chạy tại: http://localhost:${PORT}`);
+  console.log(`('>>> Server chạy tại: http://localhost:${PORT}`);
 });
 
 // ===== Đóng server an toàn =====

@@ -13,7 +13,7 @@ const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 
 // Kiểm tra biến môi trường bắt buộc
 if (!process.env.MONGODB_URI) {
-  console.error('*** Thiếu MONGODB_URI trong file .env');
+  console.error('Thiếu MONGODB_URI trong file .env');
   process.exit(1);
 }
 
@@ -31,18 +31,15 @@ const io = socketIO(server, {
 // Middleware bảo mật, log, giới hạn request
 app.use(helmet());
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
-app.use(rateLimit({
-  windowMs: 60 * 1000,
-  max: 120,
-  message: '*** Quá nhiều request, vui lòng thử lại sau.'
-}));
+app.use(rateLimit({ windowMs: 60 * 1000, max: 120 }));
 
-// Cấu hình CORS & body parser
+// Cấu hình CORS và parse body
 app.use(cors({
   origin: process.env.FRONTEND_ORIGIN || true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -53,11 +50,11 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
   .then(() => console.log('>>> Kết nối MongoDB thành công'))
   .catch(err => {
-    console.error('*** Lỗi kết nối MongoDB:', err.message);
+    console.error('*** Lỗi kết nối MongoDB:', err);
     process.exit(1);
   });
 
-// ===== Đăng ký route =====
+// Đăng ký các route API
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 app.use('/api/appointments', require('./routes/appointment.routes'));
@@ -70,13 +67,12 @@ app.use('/api/patients', require('./routes/patient.routes'));
 app.use('/api/medical-records', require('./routes/medicalRecord.routes'));
 app.use('/api/health-records', require('./routes/healthRecord.routes'));
 app.use('/api/doctor-dashboard', require('./routes/doctorDashboard.routes'));
-app.use('/api/booking', require('./routes/booking.routes'));
 
 // Middleware xử lý lỗi
 app.use(notFound);
 app.use(errorHandler);
 
-// ===== Socket.IO logic =====
+// Socket.IO logic (chat, gọi video...)
 try {
   const socketHandler = require('./socket');
   if (typeof socketHandler === 'function') {
@@ -84,18 +80,18 @@ try {
     console.log('>>> Socket.IO sẵn sàng');
   }
 } catch {
-  console.warn('>>> Không tìm thấy file socket.js, bỏ qua Socket.IO');
+  console.warn('*** Không tìm thấy file socket.js, bỏ qua Socket.IO');
 }
 
-// ===== Khởi động server =====
+// Chạy server
 const PORT = process.env.PORT || 5000;
 const instance = server.listen(PORT, () => {
-  console.log(`>>> Server chạy tại: http://localhost:${PORT}`);
+  console.log(`>>> Server chạy tại http://localhost:${PORT}`);
 });
 
-// ===== Đóng server an toàn =====
+// Đóng server an toàn khi dừng
 const shutdown = () => {
-  console.log('>>> Đang tắt server...');
+  console.log('*** Đang tắt server...');
   instance.close(() => {
     mongoose.connection.close(false, () => process.exit(0));
   });

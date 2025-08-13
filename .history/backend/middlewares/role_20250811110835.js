@@ -3,7 +3,6 @@ const authorize = (...roles) => {
   return (req, res, next) => {
     const userRole = req.user?.role?.toLowerCase().trim();
     const allowedRoles = roles.map(r => r.toLowerCase().trim());
-
     if (!allowedRoles.includes(userRole)) {
       return res.status(403).json({ error: 'Bạn không có quyền truy cập' });
     }
@@ -13,7 +12,7 @@ const authorize = (...roles) => {
 
 // Middleware: Chỉ cho bác sĩ
 const isDoctor = (req, res, next) => {
-  if (req.user?.role?.toLowerCase().trim() !== 'doctor') {
+  if (req.user?.role !== 'doctor') {
     return res.status(403).json({ error: 'Chỉ bác sĩ mới được truy cập' });
   }
   next();

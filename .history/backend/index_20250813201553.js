@@ -13,7 +13,7 @@ const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 
 // Kiểm tra biến môi trường bắt buộc
 if (!process.env.MONGODB_URI) {
-  console.error('*** Thiếu MONGODB_URI trong file .env');
+  console.error('❌ Thiếu MONGODB_URI trong file .env');
   process.exit(1);
 }
 
@@ -70,7 +70,6 @@ app.use('/api/patients', require('./routes/patient.routes'));
 app.use('/api/medical-records', require('./routes/medicalRecord.routes'));
 app.use('/api/health-records', require('./routes/healthRecord.routes'));
 app.use('/api/doctor-dashboard', require('./routes/doctorDashboard.routes'));
-app.use('/api/booking', require('./routes/booking.routes'));
 
 // Middleware xử lý lỗi
 app.use(notFound);

@@ -70,7 +70,7 @@ app.use('/api/patients', require('./routes/patient.routes'));
 app.use('/api/medical-records', require('./routes/medicalRecord.routes'));
 app.use('/api/health-records', require('./routes/healthRecord.routes'));
 app.use('/api/doctor-dashboard', require('./routes/doctorDashboard.routes'));
-app.use('/api/booking', require('./routes/booking.routes'));
+app.use('/api/booking', require);
 
 // Middleware xử lý lỗi
 app.use(notFound);
