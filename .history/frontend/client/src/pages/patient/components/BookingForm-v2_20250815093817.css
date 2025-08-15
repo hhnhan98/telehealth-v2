@@ -1,0 +1,111 @@
+/* ===== Booking Form v3 - Giao diện giống Vinmec ===== */
+
+/* Khung form */
+.booking-form-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 30px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Tiêu đề form */
+.form-title {
+  font-size: 1.8rem;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Mỗi section */
+.form-section {
+  margin-bottom: 25px;
+}
+
+.form-section h3 {
+  font-size: 1.2rem;
+  color: rgb(0, 0, 0);
+  border-left: 4px solid rgb(0, 0, 0);
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+/* Hàng input */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+/* Nhóm input */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: rgb(0, 0, 0);
+}
+
+/* Input & Select */
+input, select, textarea {
+  padding: 10px 12px;
+  border: 1px solid #dcdde1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: rgb(0, 0, 0);
+  box-shadow: 0 0 0 2px rgba(10,61,98,0.1);
+  outline: none;
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Nút submit */
+.form-submit {
+  text-align: center;
+}
+
+button {
+  background: #59c2ffff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #07405c;
+}
+
+button:disabled {
+  background: #b2bec3;
+  cursor: not-allowed;
+}
+
+/* Responsive mobile */
+@media (max-width: 600px) {
+  .booking-form-container {
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.4rem;
+  }
+}
