@@ -1,0 +1,101 @@
+/* AppointmentList.css */
+
+.appointment-list-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.appointment-list-container h2 {
+  margin-bottom: 20px;
+  color: #0c5ca8;
+  text-align: center;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointment-table th,
+.appointment-table td {
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.appointment-table th {
+  background-color: #0c5ca8;
+  color: #fff;
+  font-weight: 600;
+}
+
+.appointment-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.appointment-table tr:hover {
+  background-color: #e6f0fa;
+}
+
+.cancel-btn {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+.otp-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.otp-container input {
+  width: 80px;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.otp-container button {
+  background-color: #0c5ca8;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.otp-container button:hover {
+  background-color: #094a86;
+}
+
+.success-text {
+  color: green;
+  font-weight: 600;
+}
+
+.error-text {
+  color: red;
+  font-weight: 600;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

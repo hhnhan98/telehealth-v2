@@ -1,0 +1,66 @@
+/* src/pages/patient/sections/AppointmentList.css */
+
+.appointment-list-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.appointment-list-container h2 {
+  margin-bottom: 20px;
+  color: #1e3a8a;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.appointment-table th,
+.appointment-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.appointment-table th {
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.appointment-table tr:hover {
+  background-color: #f9fafb;
+}
+
+.cancel-btn {
+  padding: 6px 12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #b91c1c;
+}
+
+.error {
+  color: #b91c1c;
+  font-weight: 500;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: #374151;
+}
