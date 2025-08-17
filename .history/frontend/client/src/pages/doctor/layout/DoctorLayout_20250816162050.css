@@ -1,0 +1,188 @@
+/* ===== Layout tổng thể ===== */
+.doctor-layout {
+  display: flex;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6fa;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 240px;
+  background-color: #59c2ff;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  transition: width 0.3s ease;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #59c2ff; /* màu chủ đạo */
+}
+
+/* Menu list */
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 20px;
+}
+
+.sidebar nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar nav ul li a.active,
+.sidebar nav ul li a:hover {
+  background-color: #59c2ff; /* màu chủ đạo */
+  color: #fff;
+}
+
+.sidebar nav ul li a .icon {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* ===== Main content ===== */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ===== Header ===== */
+.header {
+  height: 65px;
+  background-color: #fff;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.welcome {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Nút header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-actions button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #59c2ff; /* màu chủ đạo */
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.header-actions button:hover {
+  background-color: #3da0ff; /* sắc độ đậm hơn khi hover */
+}
+
+/* Badge thông báo */
+.btn-notification {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: #ff4d4f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
+
+/* ===== Content area ===== */
+.content-area {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  background-color: #f4f6fa;
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .doctor-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px 5px;
+  }
+  .sidebar nav ul {
+    display: flex;
+    gap: 10px;
+  }
+  .sidebar nav ul li {
+    margin-bottom: 0;
+  }
+  .sidebar nav ul li a {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+  .main-content {
+    width: 100%;
+  }
+  .header {
+    padding: 0 15px;
+  }
+  .content-area {
+    padding: 15px;
+  }
+}
+
+/* ===== Scrollbar đẹp ===== */
+.content-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.content-area::-webkit-scrollbar-track {
+  background: transparent;
+}

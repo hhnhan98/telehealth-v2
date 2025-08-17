@@ -1,0 +1,74 @@
+.appointment-list-container {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.appointment-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Card style */
+.appointment-card {
+  background-color: #f0f8ff;
+  border-left: 5px solid #59c2ff;
+  border-radius: 8px;
+  padding: 12px 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.card-label {
+  font-weight: 600;
+  color: #59c2ff;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+/* OTP and buttons */
+.otp-input { width: 60px; padding: 3px; }
+.btn-otp { background-color: #28a745; color: white; border: none; border-radius: 4px; padding: 3px 6px; cursor: pointer; }
+.btn-resend { background-color: #007bff; color: white; border: none; border-radius: 4px; padding: 3px 6px; cursor: pointer; }
+.btn-cancel { background-color: #dc3545; color: white; border: none; border-radius: 4px; padding: 3px 6px; cursor: pointer; }
+
+/* Status colors */
+.status.pending { color: #ff9900; font-weight: 600; }
+.status.confirmed { color: #28a745; font-weight: 600; }
+.status.cancelled { color: #dc3545; font-weight: 600; }
+.status.completed { color: #6c757d; font-weight: 600; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  z-index: 999;
+}
+.toast.success { background-color: #28a745; }
+.toast.error { background-color: #dc3545; }
+.toast .close { margin-left: 10px; cursor: pointer; }
+
+/* Responsive for desktop/tablet */
+@media(min-width: 768px) {
+  .appointment-wrapper { display: block; }
+  .appointment-card { display: table; width: 100%; border-left: none; border-radius: 0; margin-bottom: 10px; }
+  .card-row { display: table-row; }
+  .card-label { display: table-cell; font-weight: bold; padding: 8px; }
+  .card-row span:last-child { display: table-cell; padding: 8px; }
+  .action-row { display: flex; justify-content: flex-start; margin-top: 0; }
+}

@@ -1,0 +1,76 @@
+.appointment-list-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.appointment-table-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.appointment-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.appt-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.appt-body p {
+  margin: 0.3rem 0;
+}
+
+.appt-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.otp-container input {
+  width: 80px;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-verify {
+  background-color: #0071c5;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-verify:hover { background-color: #005a9e; }
+
+.btn-cancel {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover { background-color: #b71c1c; }
+
+.status.pending { color: #ff9800; }
+.status.confirmed { color: #4caf50; }
+.status.cancelled { color: #f44336; }
+.status.completed { color: #2196f3; }
+
+.success-text { color: #4caf50; margin-left: 0.5rem; }
+.error-text { color: #f44336; margin-left: 0.5rem; }
+.completed-text { color: #2196f3; font-weight: bold; }

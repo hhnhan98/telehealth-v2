@@ -1,0 +1,69 @@
+/* DoctorSchedule.css */
+
+.schedule-container {
+  padding: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.schedule-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.view-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+.view-buttons button.active {
+  background-color: #59c2ff;
+  color: white;
+}
+
+.view-buttons button:hover {
+  background-color: #d0d0d0;
+}
+
+.schedule-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.schedule-item {
+  background-color: #f1f8ff;
+  border-left: 4px solid #59c2ff;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.schedule-item:hover {
+  transform: scale(1.01);
+}
+
+.schedule-item strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
