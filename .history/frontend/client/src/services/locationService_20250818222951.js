@@ -1,0 +1,28 @@
+// src/services/locationService.js
+import axiosInstance from './api';
+
+// ------------------------- Helper -------------------------
+const handleError = (err) => {
+  console.error('LocationService error:', err.response?.data || err.message || err);
+  throw err.response?.data || err;
+};
+
+// ------------------------- Location APIs -------------------------
+
+// Lấy danh sách tất cả cơ sở y tế
+
+export const fetchLocations = async () => {
+  try {
+    const res = await axiosInstance.get('/locations');
+    return res.data.locations || []; // đảm bảo luôn trả về mảng
+  } catch (err) {
+    return handleError(err);
+  }
+};
+
+// ------------------------- Export -------------------------
+const locationService = {
+  fetchLocations
+};
+
+export default locationService;

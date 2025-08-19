@@ -1,0 +1,238 @@
+import React, { useEffect, useState } from 'react';
+import { fetchDoctorSchedule } from '../../../services/bookingService'; // hoặc scheduleService
+import './DoctorSchedule.css';
+
+const STATUS_LABELS = {
+  all: 'Tất cả',
+  pending: 'Chờ xác nhận',
+  confirmed: 'Đã xác nhận',
+  cancelled: 'Đã hủy',
+};
+
+const STATUS_COLORS = {
+  pending: '#FFD966',
+  confirmed: '#59c2ff',
+  cancelled: '#FF6B6B',
+  new: '#ccc',
+};
+
+const DATE_FILTERS = {
+  all: 'Tất cả',
+  today: 'Hôm nay',
+  week: 'Tuần này',
+};
+
+const DoctorSchedule = () => {
+  const [weekSchedule, setWeekSchedule] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [filter, setFilter] = useState({ status: 'all', dateRange: 'week' });
+
+  const loadSchedule = async () => {
+    try {
+      setLoading(true);
+      const res = await fetchDoctorSchedule(filter.dateRange);
+      setWeekSchedule(res.weekSchedule || []);
+      setError(null);
+    } catch (err) {
+      console.error(err);
+      setError('Không thể tải lịch hẹn');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadSchedule();
+  }, [filter.dateRange]); // load lại khi thay đổi ngày (today/week/all)
+
+  const filterAppointments = (appointments) => {
+    return appointments
+      .filter(appt => filter.status === 'all' || appt.status === filter.status)
+      .filter(appt => {
+        if (filter.dateRange === 'today') {
+          return new Date(appt.date).toDateString() === new Date().toDateString();
+        }
+        return true;
+      })
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+  };
+
+  if (loading) return <p className="loading">Đang tải lịch hẹn...</p>;
+  if (error) return <p className="error">{error}</p>;
+
+  return (
+    <div className="doctor-schedule">
+      <h2>Lịch khám bác sĩ</h2>
+
+      {/* Bộ lọc */}
+      <div className="filter-quick">
+        <div className="filter-group">
+          <span>Trạng thái:</span>
+          {Object.keys(STATUS_LABELS).map(key => (
+            <button
+              key={key}
+              className={filter.status === key ? 'active' : ''}
+              onClick={() => setFilter(prev => ({ ...prev, status: key }))}
+            >
+              {STATUS_LABELS[key]}
+            </button>
+          ))}
+        </div>
+        <div className="filter-group">
+          <span>Ngày:</span>
+          {Object.keys(DATE_FILTERS).map(key => (
+            <button
+              key={key}
+              className={filter.dateRange === key ? 'active' : ''}
+              onClick={() => setFilter(prev => ({ ...prev, dateRange: key }))}
+            >
+              {DATE_FILTERS[key]}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Lịch tuần */}
+      <div className="weekly-schedule">
+        {weekSchedule.map(day => {
+          const dayDate = new Date(day.date);
+          const filteredAppointments = filterAppointments(day.appointments || []);
+
+          return (
+            <div className="day-card" key={day.date}>
+              <h4>{dayDate.toLocaleDateString('vi-VN', { weekday: 'long', day: 'numeric', month: 'numeric' })}</h4>
+              {filteredAppointments.length === 0 ? (
+                <p>Chưa có lịch</p>
+              ) : (
+                <div className="slots">
+                  {filteredAppointments.map(appt => (
+                    <div
+                      key={appt._id}
+                      className="slot"
+                      style={{ backgroundColor: STATUS_COLORS[appt.status || 'new'] }}
+                    >
+                      {new Date(appt.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {appt.patient?.fullName || 'Chưa có tên'}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default DoctorSchedule;
+
+// import React, { useEffect, useState } from 'react';
+// import axios from '../../../utils/axiosInstance';
+// import './DoctorSchedule.css';
+
+// const STATUS_COLORS = {
+//   pending: '#FFD966',
+//   confirmed: '#59c2ff',
+//   cancelled: '#FF6B6B',
+//   new: '#ccc'
+// };
+
+// const DoctorSchedule = () => {
+//   const [weekSchedule, setWeekSchedule] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const [filter, setFilter] = useState({ status: 'all', dateRange: 'week' });
+
+//   useEffect(() => {
+//     const fetchSchedule = async () => {
+//       try {
+//         setLoading(true);
+//         const res = await axios.get('/doctors/dashboard'); // backend trả weekSchedule
+//         setWeekSchedule(res.data.weekSchedule || []);
+//         setError(null);
+//       } catch (err) {
+//         console.error(err);
+//         setError('Không thể tải lịch hẹn');
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+//     fetchSchedule();
+//   }, []);
+
+//   if (loading) return <p className="loading">Đang tải lịch hẹn...</p>;
+//   if (error) return <p className="error">{error}</p>;
+
+//   return (
+//     <div className="doctor-schedule">
+//       <h2>Lịch khám bác sĩ</h2>
+
+//       {/* Bộ lọc nhanh */}
+//       <div className="filter-quick">
+//         <div className="filter-group">
+//           <span>Trạng thái:</span>
+//           {['all','pending','confirmed','cancelled'].map(s => (
+//             <button
+//               key={s}
+//               className={filter.status===s?'active':''}
+//               onClick={()=>setFilter({...filter,status:s})}
+//             >
+//               {s==='all'?'Tất cả': s==='pending'?'Chờ xác nhận': s==='confirmed'?'Đã xác nhận':'Đã hủy'}
+//             </button>
+//           ))}
+//         </div>
+//         <div className="filter-group">
+//           <span>Ngày:</span>
+//           {['all','today','week'].map(d => (
+//             <button
+//               key={d}
+//               className={filter.dateRange===d?'active':''}
+//               onClick={()=>setFilter({...filter,dateRange:d})}
+//             >
+//               {d==='all'?'Tất cả': d==='today'?'Hôm nay':'Tuần này'}
+//             </button>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Lịch tuần */}
+//       <div className="weekly-schedule">
+//         {weekSchedule.map(day => {
+//           const dayDate = new Date(day.date);
+//           const filteredAppointments = day.appointments
+//             .filter(appt => filter.status==='all' || appt.status===filter.status)
+//             .filter(appt => {
+//               if(filter.dateRange==='today'){
+//                 const today = new Date();
+//                 return new Date(appt.date).toDateString() === today.toDateString();
+//               }
+//               return true;
+//             })
+//             .sort((a,b)=>new Date(a.date)-new Date(b.date));
+
+//           return (
+//             <div className="day-card" key={day.date}>
+//               <h4>{dayDate.toLocaleDateString('vi-VN', { weekday:'long', day:'numeric', month:'numeric' })}</h4>
+//               {filteredAppointments.length===0 ? <p>Chưa có lịch</p> :
+//                 <div className="slots">
+//                   {filteredAppointments.map(appt => (
+//                     <div
+//                       key={appt._id}
+//                       className="slot"
+//                       style={{backgroundColor: STATUS_COLORS[appt.status||'new']}}
+//                     >
+//                       {new Date(appt.date).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})} - {appt.patient?.fullName || 'Chưa có tên'}
+//                     </div>
+//                   ))}
+//                 </div>
+//               }
+//             </div>
+//           )
+//         })}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default DoctorSchedule;

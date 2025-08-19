@@ -1,0 +1,38 @@
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.avatar-preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3B82F6;
+  transition: 0.3s;
+}
+
+.avatar-section:hover .avatar-preview {
+  transform: scale(1.05);
+}
+
+.upload-btn {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #3B82F6;
+  font-weight: 500;
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media screen and (max-width: 650px) {
+  .profile-form { grid-template-columns: 1fr; }
+}
