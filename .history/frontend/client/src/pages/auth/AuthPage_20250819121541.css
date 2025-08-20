@@ -1,0 +1,135 @@
+/* src/pages/auth/AuthPage.css */
+
+.auth-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.auth-left {
+  flex: 1;
+  background: linear-gradient(135deg, #0077ff, #00c6ff);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.auth-left h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.auth-left p {
+  font-size: 1.2rem;
+}
+
+.auth-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+}
+
+.auth-form {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s ease-in-out;
+}
+
+.auth-form input:focus {
+  border-color: #0077ff;
+  outline: none;
+}
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-wrapper input {
+  flex: 1;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #0077ff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.toggle-password:hover {
+  text-decoration: underline;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background: #0077ff;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.auth-btn:hover {
+  background: #005fcc;
+}
+
+.auth-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.auth-footer {
+  margin-top: 15px;
+  text-align: center;
+  color: #555;
+}
+
+.auth-footer span {
+  color: #0077ff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-footer span:hover {
+  text-decoration: underline;
+}
