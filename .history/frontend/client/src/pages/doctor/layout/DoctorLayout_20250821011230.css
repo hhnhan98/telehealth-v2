@@ -1,0 +1,13 @@
+/* Thêm vào DoctorLayout.css */
+.content-area {
+  position: relative;
+  z-index: 1;
+}
+
+/* Style debug để thấy rõ */
+.doctor-profile-page {
+  border: 3px solid red !important;
+  background: #fff !important;
+  z-index: 1000;
+  position: relative;
+}

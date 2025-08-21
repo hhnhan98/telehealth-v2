@@ -1,0 +1,156 @@
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f0f4f8; /* pastel background nhẹ */
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* --- Color Palette --- */
+:root {
+    --primary-color: #59c2ff;       /* màu chủ đạo */
+    --primary-light: #a3d5ff;       /* pastel sáng hơn */
+    --primary-dark: #2678c2;        /* pastel tối hơn */
+    --secondary-color: #ffd699;     /* màu phụ */
+    --secondary-light: #fff0d6;
+    --accent-color: #ff9aa2;        /* màu highlight/alert */
+    --background-color: #f0f4f8;    /* tổng thể nền */
+    --card-background: #ffffff;     /* nền card */
+    --border-color: #d1dbe6;        /* border nhẹ */
+    --text-color: #1a1a1a;
+    --text-muted: #6b7280;
+    --success-color: #6fcf97;
+    --error-color: #ff6b6b;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+p, span, label {
+    color: var(--text-color);
+}
+
+/* --- Buttons --- */
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* --- Inputs & Textareas --- */
+input, textarea, select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background-color: #ffffff;
+    color: var(--text-color);
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary-color);
+}
+
+/* --- Cards --- */
+.card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* --- Navbar/Header --- */
+.navbar {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem 2rem;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1.5rem;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* --- Tables --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-background);
+}
+
+th, td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-light);
+    color: #1a1a1a;
+}
+
+/* --- Alerts / Notifications --- */
+.alert-success {
+    background-color: var(--success-color);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.alert-error {
+    background-color: var(--error-color);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+}
+
+/* --- Links --- */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Misc --- */
+.shadow-soft {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.rounded-lg {
+    border-radius: 1rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}

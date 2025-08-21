@@ -1,0 +1,99 @@
+/* DoctorLayout.css */
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #F9FAFB;
+}
+
+.sidebar {
+  width: 170px;
+  padding: 20px;
+  background-color: #fff;
+  border-right: 1px solid #E5E7EB;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px;
+  background-color: #59c2ff6b;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.activeBtn {
+  padding: 10px;
+  background-color: #59c2ffff;
+  color: #fff;
+  border: none;
+  text-align: left;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.welcome {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnNotification {
+  padding: 10px;
+  background-color: #59c2ff6b;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.badge {
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  padding: 2px 6px;
+  margin-left: 5px;
+}
+
+.contentArea {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

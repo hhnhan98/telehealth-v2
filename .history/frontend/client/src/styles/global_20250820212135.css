@@ -1,0 +1,90 @@
+/* --- Status Labels --- */
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #fff;
+}
+.status.pending { background-color: #ffc078; }   /* warning */
+.status.confirmed { background-color: #59c2ff; } /* primary */
+.status.cancelled { background-color: #ff6b6b; } /* error */
+.status.completed { background-color: #6fcf97; } /* success */
+
+/* --- Toast / Notification --- */
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 250px;
+}
+.toast.success { background-color: var(--success-color); }
+.toast.error { background-color: var(--error-color); }
+.toast .close {
+    margin-left: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- OTP Input & Buttons --- */
+.otp-input {
+    width: 100px;
+    margin-right: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.4rem 0.6rem;
+    outline: none;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+.otp-input:focus { border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(89, 194, 255, 0.2); }
+
+.btn-verify, .btn-resend, .btn-cancel {
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0.25rem 0.25rem 0 0;
+    transition: all var(--transition-speed) ease-in-out;
+}
+.btn-verify { background-color: var(--primary-color); color: #fff; }
+.btn-verify:hover { background-color: var(--primary-dark); }
+.btn-resend { background-color: var(--secondary-color); color: var(--dark-color); }
+.btn-resend:hover { background-color: var(--secondary-light); }
+.btn-resend.disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-cancel { background-color: var(--error-color); color: #fff; }
+.btn-cancel:hover { background-color: #e05555; }
+
+/* --- Appointment Table Wrapper --- */
+.appointment-table-wrapper {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+.appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.appointment-table th, .appointment-table td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+.appointment-table th {
+    background-color: var(--primary-light);
+    color: var(--dark-color);
+}
+
+/* --- Error / Info Messages --- */
+.error { color: var(--error-color); font-weight: 500; margin-top: 0.5rem; }

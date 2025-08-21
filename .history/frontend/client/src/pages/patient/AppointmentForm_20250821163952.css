@@ -1,0 +1,188 @@
+/* =====================
+   Appointment Form Container
+===================== */
+.appointment-form-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 25px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f8fd;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* Title */
+.form-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+/* =====================
+   Form Grid - 2 Columns
+===================== */
+.appointment-form-grid {
+  display: grid;
+  gap: 20px;
+}
+
+@media(min-width: 768px){
+  .appointment-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =====================
+   Form Section Cards
+===================== */
+.form-section {
+  padding: 20px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #34495e;
+}
+
+/* =====================
+   Form Groups
+===================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #2c3e50;
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52,152,219,0.3);
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+/* =====================
+   Submit Button
+===================== */
+button.btn-submit {
+  grid-column: 1/-1;
+  padding: 12px 15px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button.btn-submit:hover {
+  background-color: #2980b9;
+}
+
+/* =====================
+   OTP Verification
+===================== */
+.otp-verification {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.otp-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.otp-actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.otp-actions button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.otp-actions button:first-child {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+.otp-actions button:last-child {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.otp-timer {
+  color: #e67e22;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* =====================
+   Toasts
+===================== */
+.toast {
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast.success { background-color: #2ecc71; color: #fff; }
+.toast.error { background-color: #e74c3c; color: #fff; }
+
+.toast .close {
+  cursor: pointer;
+  font-weight: bold;
+}

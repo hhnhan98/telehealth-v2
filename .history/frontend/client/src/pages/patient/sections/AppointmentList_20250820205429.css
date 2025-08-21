@@ -1,0 +1,164 @@
+/* ---------------- AppointmentList Container ---------------- */
+.appointment-list-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------------- Table ---------------- */
+.appointment-table-wrapper {
+  overflow-x: auto;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.appointment-table th,
+.appointment-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 14px;
+}
+
+.appointment-table th {
+  background-color: #0b5ed7; /* màu xanh y khoa */
+  color: #fff;
+  font-weight: 600;
+}
+
+.appointment-table tr:nth-child(even) {
+  background-color: #f1f3f5;
+}
+
+/* ---------------- Status Labels ---------------- */
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status.pending {
+  background-color: #ffc107; /* vàng */
+  color: #212529;
+}
+
+.status.confirmed {
+  background-color: #198754; /* xanh lá */
+  color: #fff;
+}
+
+.status.cancelled {
+  background-color: #dc3545; /* đỏ */
+  color: #fff;
+}
+
+.status.completed {
+  background-color: #0d6efd; /* xanh dương */
+  color: #fff;
+}
+
+/* ---------------- Buttons ---------------- */
+.btn-verify,
+.btn-resend,
+.btn-cancel {
+  padding: 6px 12px;
+  margin: 3px 2px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease-in-out;
+  font-weight: 500;
+}
+
+/* Verify OTP */
+.btn-verify {
+  background-color: #0d6efd;
+  color: #fff;
+}
+.btn-verify:hover {
+  background-color: #0b5ed7;
+}
+
+/* Resend OTP */
+.btn-resend {
+  background-color: #6c757d;
+  color: #fff;
+}
+.btn-resend.disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+}
+.btn-resend:hover:not(.disabled) {
+  background-color: #495057;
+}
+
+/* Cancel */
+.btn-cancel {
+  background-color: #dc3545;
+  color: #fff;
+}
+.btn-cancel:hover {
+  background-color: #c82333;
+}
+
+/* ---------------- OTP Input ---------------- */
+.otp-input {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  width: 70px;
+  text-align: center;
+  font-size: 13px;
+  margin-right: 5px;
+}
+
+/* ---------------- Toast ---------------- */
+.toast {
+  padding: 10px 16px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+}
+
+.toast.success {
+  background-color: #198754;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+.toast .close {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  .appointment-table th, .appointment-table td {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+  .otp-input {
+    width: 50px;
+    font-size: 12px;
+  }
+  .btn-verify, .btn-resend, .btn-cancel {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}

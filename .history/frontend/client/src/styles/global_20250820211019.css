@@ -1,0 +1,191 @@
+/* src/styles/global.css */
+
+/* --- Theme Variables (Pastel Edition) --- */
+:root {
+  /* Primary */
+  --color-primary: #59c2ff;          /* Màu chủ đạo */
+  --color-primary-light: #a3d4ff;    /* Nhạt hơn cho hover hoặc background */
+  --color-primary-dark: #1f8fe6;     /* Tối hơn cho hover text/button */
+
+  /* Secondary / Accent */
+  --color-secondary: #ffb3c6;        /* Hồng pastel dịu mắt */
+  --color-secondary-light: #ffd9e0;  /* Nhạt hơn cho hover/background */
+  --color-secondary-dark: #e68aa0;   /* Tối hơn cho text/button */
+
+  /* Success / Error / Warning */
+  --color-success: #b7e4c7;          /* Xanh pastel nhạt */
+  --color-success-dark: #6ac17c;
+  --color-error: #f8b7b7;            /* Đỏ pastel nhạt */
+  --color-error-dark: #e06c6c;
+  --color-warning: #ffe5a3;          /* Vàng pastel nhạt */
+  --color-warning-dark: #f5c000;
+
+  /* Backgrounds */
+  --bg-page: #f0f4f8;                /* Xám trắng nhạt dịu mắt */
+  --bg-card: #ffffff;                 /* Trắng tinh khiết cho card */
+  --bg-hover: #d9f0ff;                /* Hover nhẹ trên table/tr */
+  --bg-input-focus: #cce6ff;          /* Focus nhẹ cho input */
+
+  /* Text */
+  --text-primary: #333333;            /* Màu chữ chính */
+  --text-secondary: #555555;          /* Màu chữ phụ */
+  --text-light: #ffffff;              /* Chữ trên nền đậm */
+
+  /* Status labels */
+  --status-pending-bg: #fff0b3;       /* Vàng nhạt */
+  --status-pending-color: #856404;
+  --status-confirmed-bg: #d4edda;     /* Xanh pastel nhẹ */
+  --status-confirmed-color: #155724;
+  --status-cancelled-bg: #f8d7da;     /* Hồng pastel nhẹ */
+  --status-cancelled-color: #721c24;
+  --status-completed-bg: #cce5ff;     /* Xanh pastel nhạt */
+  --status-completed-color: #004085;
+}
+
+
+/* --- Reset cơ bản --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  line-height: 1.6;
+}
+
+/* --- Buttons --- */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+button.primary {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+}
+button.primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+button.secondary {
+  background-color: var(--color-secondary);
+  color: var(--text-light);
+}
+button.secondary:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+button.danger {
+  background-color: var(--color-error);
+  color: var(--text-light);
+}
+button.danger:hover {
+  background-color: #b02a37;
+}
+
+/* --- Inputs / Textareas --- */
+input, select, textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--bg-input-focus);
+}
+
+/* --- Tables --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: var(--bg-hover);
+}
+
+/* --- Status --- */
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.status.pending {
+  background-color: var(--status-pending-bg);
+  color: var(--status-pending-color);
+}
+
+.status.confirmed {
+  background-color: var(--status-confirmed-bg);
+  color: var(--status-confirmed-color);
+}
+
+.status.cancelled {
+  background-color: var(--status-cancelled-bg);
+  color: var(--status-cancelled-color);
+}
+
+.status.completed {
+  background-color: var(--status-completed-bg);
+  color: var(--status-completed-color);
+}
+
+/* --- Cards --- */
+.card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+}
+
+/* --- Toast --- */
+.toast {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--text-light);
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.toast.success { background-color: var(--color-success); }
+.toast.error { background-color: var(--color-error); }
+.toast.warning { background-color: var(--color-warning); }

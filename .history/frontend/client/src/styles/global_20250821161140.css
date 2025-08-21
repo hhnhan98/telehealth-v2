@@ -1,0 +1,300 @@
+/* =====================
+   Tailwind Base & Utilities
+===================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================
+   CSS Variables - Palette (Pastel)
+===================== */
+:root {
+  --primary: #a3cef1;
+  --primary-light: #d0e7fb;
+  --primary-dark: #c28de4;
+
+  --accent: #a3d4ff;
+  --accent-light: #d0e9ff;
+  --accent-dark: #73b9ff;
+
+  --background: #fdf7fb;
+  --surface: #ffffff;
+  --text: #333333;
+  --text-muted: #6c757d;
+
+  --status-pending-bg: #fff3cd;
+  --status-pending-text: #856404;
+
+  --status-confirmed-bg: #d4edda;
+  --status-confirmed-text: #155724;
+
+  --status-cancelled-bg: #f8d7da;
+  --status-cancelled-text: #721c24;
+
+  --status-completed-bg: #cce5ff;
+  --status-completed-text: #004085;
+
+  --btn-info-bg: #17a2b8;
+  --btn-info-bg-hover: #117a8b;
+
+  --btn-danger-bg: #dc3545;
+  --btn-danger-bg-hover: #b02a37;
+
+  --toast-success-bg: #28a745;
+  --toast-error-bg: #dc3545;
+}
+
+/* =====================
+   Global Reset & Fonts
+===================== */
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =====================
+   AppointmentList Container
+===================== */
+.appointment-list-container {
+  max-width: 80rem; /* ~5xl */
+  margin: 1.25rem auto;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background-color: var(--accent-light);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.appointment-list-container h2 {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+
+/* =====================
+   Table Styles
+===================== */
+.appointment-table-wrapper {
+  overflow-x: auto;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--surface);
+}
+
+.appointment-table th,
+.appointment-table td {
+  padding: 0.75rem 0.625rem;
+  text-align: left;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.appointment-table th {
+  background-color: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.appointment-table tr:hover {
+  background-color: var(--primary-light);
+}
+
+/* =====================
+   Status Badges
+===================== */
+.status {
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.status.pending {
+  background-color: var(--status-pending-bg);
+  color: var(--status-pending-text);
+}
+
+.status.confirmed {
+  background-color: var(--status-confirmed-bg);
+  color: var(--status-confirmed-text);
+}
+
+.status.cancelled {
+  background-color: var(--status-cancelled-bg);
+  color: var(--status-cancelled-text);
+}
+
+.status.completed {
+  background-color: var(--status-completed-bg);
+  color: var(--status-completed-text);
+}
+
+/* =====================
+   Inputs & Buttons
+===================== */
+.otp-input {
+  width: 5rem;
+  padding: 0.375rem 0.5rem;
+  margin-right: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+}
+
+.otp-input:focus {
+  border-color: var(--primary);
+}
+
+button.btn-verify,
+button.btn-resend,
+button.btn-cancel {
+  padding: 0.375rem 0.75rem;
+  margin: 0.125rem 0.125rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+
+.btn-verify {
+  background-color: var(--primary);
+}
+
+.btn-verify:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-resend {
+  background-color: var(--btn-info-bg);
+}
+
+.btn-resend:hover:not(.disabled) {
+  background-color: var(--btn-info-bg-hover);
+}
+
+.btn-resend.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background-color: var(--btn-danger-bg);
+}
+
+.btn-cancel:hover {
+  background-color: var(--btn-danger-bg-hover);
+}
+
+/* =====================
+   Toast Notifications
+===================== */
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #fff;
+  z-index: 50;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.toast.success {
+  background-color: var(--toast-success-bg);
+}
+
+.toast.error {
+  background-color: var(--toast-error-bg);
+}
+
+.toast .close {
+  margin-left: 0.625rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* =====================
+   Loading Spinner
+===================== */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* =====================
+   Page Header
+===================== */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.25rem 0;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* =====================
+   Profile Pages
+===================== */
+.doctor-profile-page,
+.patient-profile-page {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
