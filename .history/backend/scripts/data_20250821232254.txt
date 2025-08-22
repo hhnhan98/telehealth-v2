@@ -1,0 +1,38 @@
+===== Doctor - Specialty - Location =====
+    1. Dr Nhi Test Update - nhikhoa_benhviena@demo.com - 0912345678
+    Chuyên khoa: Nhi khoa
+    Cơ sở y tế: Bệnh viện A
+    -----------------------------
+    2. Nhi khoa Doctor at Phòng khám B - nhikhoa_phongkhamb@demo.com - -      
+    Chuyên khoa: Nhi khoa
+    Cơ sở y tế: Phòng khám B
+    -----------------------------
+    3. Nhi khoa Doctor at Trung tâm Y tế C - nhikhoa_trungtamytec@demo.com - -
+    Chuyên khoa: Nhi khoa
+    Cơ sở y tế: Trung tâm Y tế C
+    -----------------------------
+    4. Tim mạch Doctor at Bệnh viện A - timmach_benhviena@demo.com - -        
+    Chuyên khoa: Tim mạch
+    Cơ sở y tế: Bệnh viện A
+    -----------------------------
+    5. Tim mạch Doctor at Phòng khám B - timmach_phongkhamb@demo.com - -      
+    Chuyên khoa: Tim mạch
+    Cơ sở y tế: Phòng khám B
+    -----------------------------
+    6. Tim mạch Doctor at Trung tâm Y tế C - timmach_trungtamytec@demo.com - -
+    Chuyên khoa: Tim mạch
+    Cơ sở y tế: Trung tâm Y tế C
+    -----------------------------
+    7. Da liễu Doctor at Bệnh viện A - dalieu_benhviena@demo.com - -
+    Chuyên khoa: Da liễu
+    Cơ sở y tế: Bệnh viện A
+    -----------------------------
+    8. Da liễu Doctor at Phòng khám B - dalieu_phongkhamb@demo.com - -        
+    Chuyên khoa: Da liễu
+    Cơ sở y tế: Phòng khám B
+    -----------------------------
+    9. Da liễu Doctor at Trung tâm Y tế C - dalieu_trungtamytec@demo.com - -  
+    Chuyên khoa: Da liễu
+    Cơ sở y tế: Trung tâm Y tế C
+
+===== Patient =====
