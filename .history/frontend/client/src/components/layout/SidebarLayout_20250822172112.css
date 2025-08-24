@@ -1,0 +1,63 @@
+/* =============================
+   Global Layout
+   ============================= */
+.layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #F9FAFB;
+}
+
+/* =============================
+   Sidebar
+   ============================= */
+.layout-sidebar {
+  width: 220px;
+  padding: 20px;
+  background-color: #fff;
+  border-right: 1px solid #E5E7EB;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.layout-sidebar h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+/* =============================
+   Sidebar Buttons
+   ============================= */
+.layout-btn {
+  padding: 12px 16px;
+  background-color: #59c2ff6b;
+  color: #111827;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.layout-btn:hover {
+  background-color: #85c1ff;
+}
+
+.layout-btn.active {
+  background-color: #000000; /* primary color */
+  color: #fff;
+  font-weight: 500;
+}
+
+/* =============================
+   Main Content
+   ============================= */
+.layout-main {
+  flex: 1;
+  padding: 30px;
+  overflow: auto;
+}
