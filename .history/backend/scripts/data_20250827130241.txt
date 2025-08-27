@@ -1,0 +1,102 @@
+PS B:\telehealth-v2\backend> node scripts/listPatientsAndDoctors.js
+[dotenv@17.2.1] injecting env (3) from .env -- tip: 📡 auto-backup env with Radar: https://dotenvx.com/radar
+=== 📋 DANH SÁCH DOCTORS ===
+
+#1 ***
+ DoctorId: 68ae74969dc6b182b51a17ac
+ UserId:   68ae74969dc6b182b51a17a9
+ Name:     Nhi khoa Doctor at Bệnh viện A      
+ Email:    nhikhoa_benhviena@demo.com
+ Role:     doctor
+
+#1 ***
+ PatientId: 68ae749a9dc6b182b51a17fd
+ UserId:    68ae749a9dc6b182b51a17fa
+ Name:      Nguyen Van A
+ Email:     patient_a@demo.com
+ Role:      patient
+
+ =========================
+#2
+ DoctorId: 68ae74979dc6b182b51a17b5
+ UserId:   68ae74979dc6b182b51a17b2
+ Name:     Nhi khoa Doctor at Phòng khám B     
+ Email:    nhikhoa_phongkhamb@demo.com
+ Role:     doctor
+
+
+#3
+ DoctorId: 68ae74979dc6b182b51a17be
+ UserId:   68ae74979dc6b182b51a17bb
+ Name:     Nhi khoa Doctor at Trung tâm Y tế C 
+ Email:    nhikhoa_trungtamytec@demo.com       
+ Role:     doctor
+
+
+#4
+ DoctorId: 68ae74989dc6b182b51a17c7
+ UserId:   68ae74989dc6b182b51a17c4
+ Name:     Tim mạch Doctor at Bệnh viện A      
+ Email:    timmach_benhviena@demo.com
+ Role:     doctor
+
+
+#5
+ DoctorId: 68ae74989dc6b182b51a17d0
+ UserId:   68ae74989dc6b182b51a17cd
+ Name:     Tim mạch Doctor at Phòng khám B     
+ Email:    timmach_phongkhamb@demo.com
+ Role:     doctor
+
+
+#6
+ DoctorId: 68ae74999dc6b182b51a17d9
+ UserId:   68ae74999dc6b182b51a17d6
+ Name:     Tim mạch Doctor at Trung tâm Y tế C 
+ Email:    timmach_trungtamytec@demo.com       
+ Role:     doctor
+
+
+#7
+ DoctorId: 68ae74999dc6b182b51a17e2
+ UserId:   68ae74999dc6b182b51a17df
+ Name:     Da liễu Doctor at Bệnh viện A       
+ Email:    dalieu_benhviena@demo.com
+ Role:     doctor
+
+
+#8
+ DoctorId: 68ae749a9dc6b182b51a17eb
+ UserId:   68ae749a9dc6b182b51a17e8
+ Name:     Da liễu Doctor at Phòng khám B      
+ Email:    dalieu_phongkhamb@demo.com
+ Role:     doctor
+
+
+#9
+ DoctorId: 68ae749a9dc6b182b51a17f4
+ UserId:   68ae749a9dc6b182b51a17f1
+ Name:     Da liễu Doctor at Trung tâm Y tế C  
+ Email:    dalieu_trungtamytec@demo.com        
+ Role:     doctor
+
+
+=== 📋 DANH SÁCH PATIENTS ===
+
+#2
+ PatientId: 68ae749b9dc6b182b51a1802
+ UserId:    68ae749b9dc6b182b51a17ff
+ Name:      Tran Thi B
+ Email:     patient_b@demo.com
+ Role:      patient
+
+
+#3
+ PatientId: 68ae749b9dc6b182b51a1807
+ UserId:    68ae749b9dc6b182b51a1804
+ Name:      Le Van C
+ Email:     patient_c@demo.com
+ Role:      patient
+
+
+✅ Hoàn tất liệt kê danh sách.

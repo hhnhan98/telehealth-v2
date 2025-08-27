@@ -1,0 +1,193 @@
+/* src/pages/doctor/styles/DoctorDashboard.css */
+
+/* --- Container chung --- */
+.doctor-dashboard {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+/* --- Tiêu đề --- */
+.doctor-dashboard h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* --- Card thống kê --- */
+.dashboard-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background-color: #fff;
+  flex: 1 1 180px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+.stat-card h4 {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* --- Slot grid --- */
+.slot-grid-section h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #2c3e50;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 10px;
+}
+
+.slot {
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.slot:hover {
+  transform: scale(1.05);
+}
+
+/* --- Slot trạng thái --- */
+.status-free {
+  background-color: #bdc3c7;
+  color: #2c3e50;
+}
+
+.status-pending {
+  background-color: #f39c12; /* vàng */
+}
+
+.status-confirmed {
+  background-color: #27ae60; /* xanh lá */
+}
+
+.status-cancelled {
+  background-color: #c0392b; /* đỏ */
+}
+
+.status-completed {
+  background-color: #2980b9; /* xanh dương */
+}
+
+/* --- Table appointment (nếu vẫn giữ) --- */
+.appointments-section {
+  margin-top: 30px;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.appointments-table th {
+  background-color: #ecf0f1;
+  color: #555;
+  font-weight: 600;
+}
+
+.appointments-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.appointments-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* --- Nút hành động --- */
+.btn-cancel {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #ff6b6b;
+}
+
+.btn-complete {
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-complete:hover {
+  background-color: #2ecc71;
+}
+
+.btn-detail {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-detail:hover {
+  background-color: #5dade2;
+}
+
+/* --- State loading / empty --- */
+.loading-state, .error-state, .empty-state {
+  padding: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}

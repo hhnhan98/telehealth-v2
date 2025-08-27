@@ -1,0 +1,174 @@
+/* Container chính */
+.doctor-dashboard {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* ===== Card thống kê ===== */
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  flex: 1 1 150px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.stat-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111;
+}
+
+/* ===== Calendar Controls ===== */
+.calendar-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-control {
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.btn-control:hover {
+  background-color: #eee;
+}
+
+.date-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-picker {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.day-label {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+
+/* ===== Slot Grid ===== */
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  justify-items: center;
+  align-items: center;
+}
+
+
+.slot {
+  width: 90%;
+  padding: 0.8rem 0;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid #959595a0;
+  background-color: #bdbdbd12;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  position: relative;
+  font-weight: 500;
+}
+
+.slot:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}   
+
+/* ===== Slot booked trạng thái ===== */
+.slot.booked {
+  border-color: rgba(16, 117, 176, 0.448);
+  background-color: rgba(175, 223, 250, 0.418);
+  font
+}
+
+/* Nếu muốn tách màu theo trạng thái appointment */
+.slot.pending {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.slot.confirmed {
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+
+.slot.completed {
+  background-color: #cfe2ff;
+  border-color: #9ec5fe;
+}
+
+/* Tooltip */
+.slot[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(60,60,60,0.9);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 800px) {
+  .slot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .slot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}

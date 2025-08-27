@@ -1,0 +1,1 @@
+viết DoctorDashboard.jsx nâng cấp trực tiếp, bao gồm card thống kê nâng cao + bảng lịch hẹn hôm nay + highlight trạng thái + thao tác nhanh.

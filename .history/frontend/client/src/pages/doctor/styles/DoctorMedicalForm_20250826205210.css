@@ -1,0 +1,96 @@
+/* /* ================== Chuẩn hóa in ấn ================== */
+@media print {
+
+  /* Container in */
+  .medical-form-background {
+    background: #fff !important;
+    padding: 0 !important;
+  }
+
+  .medical-form-container {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    padding: 2cm !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Tiêu đề */
+  .form-title {
+    font-size: 1.6rem !important;
+    text-align: center;
+    margin-bottom: 1.5rem !important;
+    color: #000 !important;
+  }
+
+  /* Section cards */
+  .section-card,
+  .patient-info {
+    background: #fff !important;
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Label và input */
+  .form-group label {
+    color: #000 !important;
+    font-weight: 600;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    font-size: 0.95rem !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  textarea {
+    min-height: 50px !important;
+  }
+
+  /* Ẩn nút và màu sắc không cần thiết */
+  .btn-blue,
+  .btn-green,
+  .btn-red {
+    display: none !important;
+  }
+
+  /* Error highlight bỏ màu */
+  .error-input {
+    border-color: #000 !important;
+    box-shadow: none !important;
+  }
+
+  .error-text {
+    color: #000 !important;
+  }
+
+  /* Prescription rows & form-row */
+  .form-row,
+  .prescription-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Page break sau mỗi section nếu cần */
+  .section-card {
+    page-break-inside: avoid;
+  }
+
+  /* Bố cục full width in */
+  .medical-form-container,
+  .form-row,
+  .prescription-row,
+  .form-group input,
+  .form-group textarea {
+    width: 100% !important;
+    flex: none !important;
+  }
+}
+    

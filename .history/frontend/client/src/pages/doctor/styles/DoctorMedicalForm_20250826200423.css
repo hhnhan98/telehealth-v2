@@ -1,0 +1,73 @@
+.medical-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.appointment-info-card {
+  margin-bottom: 20px;
+}
+
+.appointment-details p {
+  margin: 4px 0;
+}
+
+.medical-form .section-card {
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.medical-form .form-group {
+  margin-bottom: 15px;
+}
+
+.medical-form textarea,
+.medical-form input {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.medical-form .error-input {
+  border-color: red;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.85rem;
+}
+
+.prescription-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr auto;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.btn-red {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.btn-green {
+  background-color: #38a169;
+  color: white;
+}
+
+.btn-blue {
+  background-color: #3182ce;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  margin-top: 40px;
+}

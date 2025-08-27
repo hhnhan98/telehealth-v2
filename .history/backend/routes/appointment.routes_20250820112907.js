@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../../middlewares/auth/auth');
-const bookingController = require('../../controllers/appointment/booking.controller');
+const bookingController = require('../../controllers/appointment/appointment.controller');
 
 // ========================= Dropdown APIs =========================
 // Lấy danh sách cơ sở

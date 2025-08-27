@@ -1,0 +1,135 @@
+/* DoctorAppointmentDetail.css */
+
+/* Container chính căn giữa */
+.doctor-appointment-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: Arial, sans-serif;
+}
+
+/* Card chung */
+.doctor-appointment-card {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Tiêu đề card */
+.doctor-appointment-card h2,
+.doctor-appointment-card h3 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Avatar + thông tin bệnh nhân */
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.patient-info img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  object-fit: cover;
+}
+
+/* Thông tin bệnh nhân text */
+.patient-info div p {
+  margin: 2px 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+/* Thông tin bác sĩ */
+.doctor-info {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Thông tin khác */
+.appointment-details p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+/* Trạng thái */
+.appointment-status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.status-confirmed {
+  background-color: #bbf7d0;
+  color: #15803d;
+}
+
+.status-cancelled {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-completed {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+/* Phiếu khám */
+.medical-receipt {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+
+/* Nút */
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Error message */
+.error-message {
+  text-align: center;
+  color: #b91c1c;
+  margin-top: 2rem;
+}
+
+/* Loading message */
+.loading-message {
+  text-align: center;
+  color: #374151;
+  margin-top: 2rem;
+}

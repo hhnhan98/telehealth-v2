@@ -1,0 +1,26 @@
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+const DEFAULT_TZ = 'Asia/Ho_Chi_Minh';
+
+// Chuyển Date (UTC) sang giờ VN
+export const toVN = (dateUTC) => {
+  return dayjs(dateUTC).tz(DEFAULT_TZ).toDate();
+};
+
+// Chuyển Date (VN) sang UTC
+export const toUTC = (dateVN) => {
+  return dayjs.tz(dateVN, DEFAULT_TZ).utc().toDate();
+};
+
+// Format Date sang string theo timezone VN
+export const formatVN = (datetime) => {
+  if (!datetime) return '';
+  return dayjs(datetime).isValid()
+    ? dayjs(datetime).format('YYYY-MM-DD HH:mm')
+    : 'Invalid Date';
+};

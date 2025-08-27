@@ -1,0 +1,55 @@
+/* Layout chính của dashboard */
+.dashboard-container {
+  @apply p-6;
+}
+
+.dashboard-header {
+  @apply flex items-center justify-between mb-6;
+}
+
+.dashboard-title {
+  @apply text-2xl font-bold;
+}
+
+.dashboard-controls {
+  @apply flex items-center gap-4;
+}
+
+.date-button {
+  @apply px-3 py-1 rounded-md bg-gray-200 hover:bg-gray-300 transition;
+}
+
+.date-display {
+  @apply text-lg font-semibold;
+}
+
+.slot-grid {
+  @apply grid grid-cols-4 gap-6;
+}
+
+/* Card slot */
+.slot-card {
+  @apply flex flex-col items-center justify-center p-4 rounded-xl shadow-md transition transform hover:scale-105 cursor-pointer;
+  min-height: 100px;
+}
+
+.slot-booked {
+  @apply bg-red-100 border border-red-300 text-red-700;
+}
+
+.slot-free {
+  @apply bg-green-100 border border-green-300 text-green-700;
+}
+
+/* Nội dung modal preview */
+.modal-preview-content {
+  @apply space-y-3 text-gray-700;
+}
+
+.modal-preview-content p {
+  @apply text-base;
+}
+
+.modal-preview-actions {
+  @apply flex justify-end gap-4 mt-4;
+}

@@ -1,0 +1,41 @@
+// scripts/testSlotsNew.js
+const mongoose = require('mongoose');
+const dayjs = require('dayjs');
+const { toVN, toUTC, formatVN } = require('../utils/timezone');
+const ScheduleService = require('../services/schedule.service');
+const Doctor = require('../models/Doctor');
+require('dotenv').config();
+
+// Thay đổi URL MongoDB của bạn nếu cần
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/telehealth-v2';
+
+const testGetAvailableSlots = async (doctorId, date) => {
+  try {
+    await mongoose.connect(MONGO_URI);
+    console.log('✅ MongoDB connected');
+
+    console.log(`\n>>> Testing getAvailableSlots for Doctor: ${doctorId}, Date: ${date}\n`);
+
+    const availableSlots = await ScheduleService.getAvailableSlots(doctorId, date);
+
+    console.log(`Total available slots: ${availableSlots.length}\n`);
+
+    availableSlots.forEach((slot, index) => {
+      console.log(
+        `${index + 1}. timeStr: ${slot.time}, datetimeUTC: ${slot.datetimeUTC}, VN: ${formatVN(slot.datetimeUTC)}`
+      );
+    });
+
+    console.log('\n✅ Test completed and disconnected from MongoDB');
+  } catch (err) {
+    console.error('❌ Error testing getAvailableSlots:', err);
+  } finally {
+    await mongoose.disconnect();
+  }
+};
+
+// ----- Chỉnh doctorId và date cần test -----
+const doctorId = '68a70330cfc3626362efbb79';
+const date = '2025-08-26';
+
+testGetAvailableSlots(doctorId, date);

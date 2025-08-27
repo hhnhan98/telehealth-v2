@@ -1,0 +1,119 @@
+/* src/pages/doctor/styles/DoctorDashboard.css */
+
+/* Container chung */
+.doctor-dashboard {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+/* Tiêu đề */
+.doctor-dashboard h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* ===== Card thống kê ===== */
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background-color: #fff;
+  flex: 1 1 220px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-card h4 {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2f3640;
+}
+
+/* ===== Calendar tuần ===== */
+.calendar-week {
+  overflow-x: auto;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-weight: 600;
+  padding: 10px 0;
+  background-color: #dfe6e9;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 40px);
+  gap: 5px;
+}
+
+.calendar-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+/* Slot */
+.calendar-slot {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+/* Slot free */
+.calendar-slot.free {
+  background-color: #dff9fb;
+  color: #2d3436;
+}
+
+/* Slot booked */
+.calendar-slot.booked {
+  background-color: #ff7675;
+  color: #fff;
+}
+
+/* Hover tooltip (title) sẽ tự động hiển thị theo browser */
+.calendar-slot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Scroll ngang nếu màn hình nhỏ */
+@media (max-width: 768px) {
+  .calendar-header, .calendar-row {
+    grid-template-columns: repeat(7, minmax(100px, 1fr));
+  }
+}

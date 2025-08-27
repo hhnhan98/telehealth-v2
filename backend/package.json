@@ -10,7 +10,8 @@
     "seed:users": "node seed/users.js",
     "clear:users": "node scripts/clearUsers.js",
     "create-admin": "node scripts/createAdmin.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --runInBand",
+    "test:timezone": "jest tests/timezone.unit.test.js --runInBand"
   },
   "keywords": [
     "telehealth",
@@ -28,6 +29,7 @@
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "date-fns": "^4.1.0",
     "dayjs": "^1.11.10",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "chalk": "^5.3.0",
+    "jest": "^30.0.5",
     "nodemon": "^3.1.10"
   }
 }

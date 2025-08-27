@@ -1,0 +1,140 @@
+/* src/pages/doctor/styles/DoctorDashboard.css */
+
+/* --- Container chung --- */
+.doctor-dashboard {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eaeef2; /* nền xám nhạt dịu mắt */
+  color: #2c3e50;
+}
+
+/* --- Tiêu đề --- */
+.doctor-dashboard h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #34495e;
+}
+
+/* --- Card thống kê --- */
+.dashboard-cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background-color: #f7f9fb; /* nền nhẹ, dịu mắt hơn trắng */
+  flex: 1 1 180px;
+  padding: 18px 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.stat-card h4 {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-bottom: 8px;
+}
+
+.stat-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* --- Bảng lịch hẹn hôm nay --- */
+.appointments-section h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #34495e;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f1f3f6; /* nền bảng dịu mắt hơn trắng */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.appointments-table th {
+  background-color: #dce1e7; /* header bảng nổi bật */
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.appointments-table tr:nth-child(even) {
+  background-color: #eef1f5; /* xen kẽ dòng */
+}
+
+.appointments-table tr:hover {
+  background-color: #e1e6eb; /* hover nhẹ */
+}
+
+/* --- Trạng thái --- */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  text-transform: capitalize;
+}
+
+.status-pending { background-color: #f39c12; }  /* vàng nổi bật */
+.status-confirmed { background-color: #27ae60; } /* xanh lá */
+.status-cancelled { background-color: #c0392b; } /* đỏ */
+.status-completed { background-color: #2980b9; } /* xanh dương */
+
+/* --- Nút thao tác nhanh --- */
+.btn-cancel,
+.btn-complete,
+.btn-detail {
+  margin-right: 6px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.btn-cancel { background-color: #e74c3c; }
+.btn-cancel:hover { background-color: #ff7675; }
+
+.btn-complete { background-color: #3498db; }
+.btn-complete:hover { background-color: #5dade2; }
+
+.btn-detail { background-color: #8e44ad; }
+.btn-detail:hover { background-color: #a569bd; }
+
+/* --- Loading, Empty, Error State --- */
+.loading-state, .error-state, .empty-state {
+  padding: 25px;
+  text-align: center;
+  font-size: 15px;
+  color: #7f8c8d;
+}

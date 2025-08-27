@@ -1,0 +1,145 @@
+/* src/pages/doctor/styles/DoctorDashboard.css */
+
+/* Container chung */
+.doctor-dashboard {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+/* Tiêu đề */
+.doctor-dashboard h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* --- Card thống kê --- */
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background-color: #fff;
+  flex: 1 1 220px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.card-content h4 {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2f3640;
+}
+
+/* --- Bảng lịch hẹn hôm nay --- */
+.appointments-section h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.appointments-table th {
+  background-color: #f1f2f6;
+  color: #555;
+  font-weight: 600;
+}
+
+.appointments-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.appointments-table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* --- Trạng thái --- */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background-color: #e1b12c; /* vàng nhạt */
+}
+
+.status-confirmed {
+  background-color: #44bd32; /* xanh lá */
+}
+
+.status-cancelled {
+  background-color: #e84118; /* đỏ */
+}
+
+.status-completed {
+  background-color: #0097e6; /* xanh dương */
+}
+
+/* --- Thao tác nhanh (nút) --- */
+.btn-action {
+  margin-right: 6px;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.btn-verify { background-color: #0984e3; }
+.btn-verify:hover { background-color: #74b9ff; }
+
+.btn-cancel { background-color: #d63031; }
+.btn-cancel:hover { background-color: #ff7675; }
+
+.btn-info { background-color: #6c5ce7; }
+.btn-info:hover { background-color: #a29bfe; }
+
+/* --- State loading & empty --- */
+.loading-state, .error-state, .empty-state {
+  padding: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
