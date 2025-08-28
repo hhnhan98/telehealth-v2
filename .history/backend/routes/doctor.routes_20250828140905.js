@@ -1,0 +1,110 @@
+const express = require('express');
+const router = express.Router();
+const multer = require('multer');
+const doctorController = require('../controllers/doctor.controller');
+const { verifyToken } = require('../middlewares/auth');
+const { authorize } = require('../middlewares/role');
+
+// --- Multer upload avatar ---
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, 'uploads/'),
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + '-' + file.originalname);
+  },
+});
+const upload = multer({ storage });
+
+// ===================== PROFILE =====================
+// GET profile
+router.get(
+  '/me',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.getMyProfile
+);
+
+// PUT update profile
+router.put(
+  '/me',
+  verifyToken,
+  authorize('doctor'),
+  upload.single('avatar'),
+  doctorController.updateProfile
+);
+
+// PUT change password
+router.put(
+  '/me/password',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.changePassword
+);
+
+// ===================== WORK SCHEDULE =====================
+router.get(
+  '/work-schedule',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.getWorkSchedule
+);
+
+// ===================== APPOINTMENTS (Doctor perspective) =====================
+router.get(
+  '/appointments',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.getDoctorAppointments
+);
+
+router.get(
+  '/appointments/date',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.getAppointmentsByDate
+);
+
+router.get(
+  '/appointments/:id',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.getAppointmentDetail
+);
+
+router.patch(
+  '/appointments/:id/status',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.updateAppointmentStatus
+);
+
+router.delete(
+  '/appointments/:id',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.cancelAppointment
+);
+
+router.post(
+  '/appointments/:id/medical-receipt',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.createMedicalReceipt
+);
+
+// ===================== PATIENTS (Doctor perspective) =====================
+router.get(
+  '/my-patients',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.getMyPatients
+);
+
+router.get(
+  '/:patientId/medical-records',
+  verifyToken,
+  authorize('doctor'),
+  doctorController.getMedicalRecordsByPatient
+);
+
+module.exports = router;

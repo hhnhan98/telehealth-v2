@@ -1,0 +1,123 @@
+/* Container chung */
+.patient-list, .medical-record-list {
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Close button */
+.btn-close {
+  padding: 0.4rem 0.8rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-close:hover {
+  background-color: #c82333;
+}
+
+/* Search bar & advanced filter */
+.search-bar, .advanced-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.search-bar input, .advanced-filters input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.btn-advanced {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-advanced:hover {
+  background-color: #0056b3;
+}
+
+/* Table wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  max-height: 400px;
+}
+
+/* Table chung */
+.table-common {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+}
+.table-common th, .table-common td {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.table-common th {
+  background-color: #f5f5f5;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.table-common tr:hover {
+  background-color: #f1f7ff;
+  cursor: pointer;
+}
+.table-common tr.selected {
+  background-color: #d0ebff;
+}
+
+/* Button view đồng bộ */
+.btn-view {
+  padding: 0.3rem 0.6rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-view:hover {
+  background-color: #0056b3;
+}
+
+/* Thông báo trạng thái */
+.loading, .error, .no-record {
+  margin: 0.5rem 0;
+  color: red;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.pagination button {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #007bff;
+  background-color: #fff;
+  cursor: pointer;
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination span {
+  font-weight: bold;
+}
