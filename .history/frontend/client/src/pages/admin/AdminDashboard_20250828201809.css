@@ -1,0 +1,154 @@
+/* Container chính */
+.admin-dashboard {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Sections */
+.admin-section {
+  margin-bottom: 40px;
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Section header */
+.admin-section h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #1f2937;
+}
+
+/* Action bar */
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.table-actions input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex-grow: 1;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+table th, table td {
+  border: 1px solid #e2e8f0;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table th {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+table tr:hover {
+  background-color: #e2e8f0;
+}
+
+/* Buttons */
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:nth-child(1) { background-color: #3b82f6; color: white; } /* Thêm / Sửa */
+button:nth-child(2) { background-color: #ef4444; color: white; } /* Xóa */
+button:nth-child(3) { background-color: #f59e0b; color: white; } /* Reset PW */
+
+/* Form Card */
+.admin-form {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-top: 20px;
+}
+
+.admin-form h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.admin-form form div {
+  margin-bottom: 12px;
+}
+
+.admin-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.admin-form input,
+.admin-form select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.admin-form input:focus,
+.admin-form select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* Multi-select styling */
+.admin-form select[multiple] {
+  height: 100px;
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  table tr { margin-bottom: 15px; }
+  table td {
+    padding-left: 50%;
+    position: relative;
+  }
+  table td::before {
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+}
