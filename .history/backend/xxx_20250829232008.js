@@ -1,0 +1,40 @@
+// User Routes:
+//   GET /api/users
+//   GET /api/users/doctors
+//   GET /api/users/me
+//   PUT /api/users/me
+//   GET /api/users/:id
+//   POST /api/users/
+//   PUT /api/users/:id
+//   DELETE /api/users/:id
+
+// Doctor Routes:
+//   GET /api/doctors/me
+//   PUT /api/doctors/me
+//   PUT /api/doctors/me/password
+//   GET /api/doctors/work-schedule
+//   GET /api/doctors/appointments
+//   GET /api/doctors/appointments/date
+//   GET /api/doctors/appointments/:id
+//   PATCH /api/doctors/appointments/:id/status
+//   DELETE /api/doctors/appointments/:id
+//   POST /api/doctors/appointments/:id/medical-receipt
+//   GET /api/doctors/my-patients
+
+// Patient Routes:
+//   GET /api/patients/me
+//   PUT /api/patients/me
+//   PUT /api/patients/me/password
+//   GET /api/patients/me/medical-records
+
+// Appointment Routes:
+//   GET /api/appointments/locations
+//   GET /api/appointments/specialties
+//   GET /api/appointments/doctors
+//   GET /api/appointments/available-slots
+//   POST /api/appointments/
+//   POST /api/appointments/verify-otp
+//   POST /api/appointments/resend-otp
+//   GET /api/appointments/
+//   GET /api/appointments/:id
+//   DELETE /api/appointments/:id
