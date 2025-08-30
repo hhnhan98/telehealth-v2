@@ -1,0 +1,194 @@
+/* ===== Container chính ===== */
+.doctor-dashboard {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* ===== Card thống kê ===== */
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  flex: 1 1 150px;
+  background-color: #e3f2fd;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.stat-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111;
+}
+
+/* ===== Calendar + Slot Section ===== */
+.calendar-section {
+  background-color: #f0f4f8;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s;
+}
+
+.calendar-section:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+/* ===== Calendar Controls ===== */
+.calendar-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-control {
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 1px solid #1976d2;
+  background: white;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.btn-control:hover {
+  background-color: #bbdefb;
+}
+
+.date-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-picker {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* ===== Slot Grid ===== */
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  justify-items: center;
+  padding-top: 0.5rem;
+}
+
+.slot {
+  width: 75%;
+  padding: 0.9rem 0;
+  text-align: center;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s, opacity 0.2s, box-shadow 0.2s, background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Slot trống */
+.slot.free {
+  background-color: #dbe9f4;
+  color: #555;
+  cursor: default;
+  opacity: 0.6;
+}
+
+.slot.free:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Slot booked (confirmed) */
+.slot.booked {
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+  opacity: 1;
+  border: 2px solid #115293;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.slot.booked:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+
+/* Tooltip */
+/* ===== Tooltip nâng cấp ===== */
+.slot[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -50%;             /* canh giữa theo chiều dọc slot */
+  left: -105%;           /* đặt tooltip ngay bên phải slot */
+  transform: translateY(-50%); /* căn giữa theo trục Y */
+  background: rgba(60, 60, 60, 0.95);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  white-space: pre-line; /* xuống dòng nếu có \n */
+  z-index: 10;
+  pointer-events: none;
+  min-width: 120px;      /* rộng tối thiểu để đọc dễ */
+  max-width: 220px;      /* giới hạn chiều rộng tooltip */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* Khi hover, hiển thị tooltip */
+.slot[title]:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(5%);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 800px) {
+  .slot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 450px) {
+  .slot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
