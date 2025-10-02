@@ -114,10 +114,10 @@ const shutdown = () => {
 process.on('SIGINT', shutdown);
 process.on('SIGTERM', shutdown);
 
-// ===== Cron Jobs =====
-try {
-  require('./scripts/expire'); // cron job cho appointment hết hạn
-  console.log('>>> Cron job expireAppointments đã được khởi động');
-} catch (err) {
-  console.error('*** Lỗi load cron job expireAppointments:', err.message);
-}
+// // ===== Cron Jobs =====
+// try {
+//   require('./scripts/expire'); // cron job cho appointment hết hạn
+//   console.log('>>> Cron job expireAppointments đã được khởi động');
+// } catch (err) {
+//   console.error('*** Lỗi load cron job expireAppointments:', err.message);
+// }

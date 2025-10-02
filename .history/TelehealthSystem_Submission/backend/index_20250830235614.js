@@ -2,14 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const http = require('http');
-// const socketIO = require('socket.io');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerSpec = require('./swagger');
 
 // ===== Kiểm tra biến môi trường bắt buộc =====
 if (!process.env.MONGODB_URI) {
@@ -116,7 +113,7 @@ process.on('SIGTERM', shutdown);
 
 // ===== Cron Jobs =====
 try {
-  require('./scripts/expire'); // cron job cho appointment hết hạn
+  require('./scripts/expireAppointments'); // cron job cho appointment hết hạn
   console.log('>>> Cron job expireAppointments đã được khởi động');
 } catch (err) {
   console.error('*** Lỗi load cron job expireAppointments:', err.message);

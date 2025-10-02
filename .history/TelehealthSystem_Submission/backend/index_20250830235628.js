@@ -2,14 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const http = require('http');
-// const socketIO = require('socket.io');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
 const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerSpec = require('./swagger');
 
 // ===== Kiểm tra biến môi trường bắt buộc =====
 if (!process.env.MONGODB_URI) {
@@ -19,14 +16,6 @@ if (!process.env.MONGODB_URI) {
 
 const app = express();
 const server = http.createServer(app);
-
-// // ===== Socket.IO =====
-// const io = socketIO(server, {
-//   cors: {
-//     origin: process.env.FRONTEND_ORIGIN || '*',
-//     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-//   },
-// });
 
 // ===== Middleware bảo mật, log, giới hạn request =====
 app.use(helmet());
@@ -52,6 +41,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('trust proxy', 1);
+
 // ===== Upload folder =====
 app.use('/uploads', express.static('uploads'));
 
@@ -63,9 +53,6 @@ mongoose
     console.error('*** Lỗi kết nối MongoDB:', err.message);
     process.exit(1);
   });
-
-// ===== Swagger Docs =====
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // ===== Khai báo Routes =====
 app.use('/api/auth', require('./routes/auth.routes'));
@@ -116,7 +103,7 @@ process.on('SIGTERM', shutdown);
 
 // ===== Cron Jobs =====
 try {
-  require('./scripts/expire'); // cron job cho appointment hết hạn
+  require('./scripts/expireAppointments'); // cron job cho appointment hết hạn
   console.log('>>> Cron job expireAppointments đã được khởi động');
 } catch (err) {
   console.error('*** Lỗi load cron job expireAppointments:', err.message);
